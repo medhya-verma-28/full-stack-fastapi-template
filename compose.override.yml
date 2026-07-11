@@ -62,11 +62,9 @@ services:
     build:
       context: .
       dockerfile: backend/Dockerfile
-    # command: sleep infinity  # Infinite loop to keep container alive doing nothing
     command:
       - fastapi
       - run
-      - --reload
       - "app/main.py"
     develop:
       watch:
@@ -78,7 +76,6 @@ services:
             - .venv
         - path: ./backend/pyproject.toml
           action: rebuild
-    # TODO: remove once coverage is done locally
     volumes:
       - ./backend/htmlcov:/app/backend/htmlcov
     environment:
@@ -86,6 +83,12 @@ services:
       SMTP_PORT: "1025"
       SMTP_TLS: "false"
       EMAILS_FROM_EMAIL: "noreply@example.com"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/openapi.json')"]
+      interval: 3s
+      timeout: 2s
+      retries: 10
+
 
   mailcatcher:
     image: schickling/mailcatcher
@@ -120,7 +123,6 @@ services:
     environment:
       - VITE_API_URL=http://backend:8000
       - MAILCATCHER_HOST=http://mailcatcher:1080
-      # For the reports when run locally
       - PLAYWRIGHT_HTML_HOST=0.0.0.0
       - CI=${CI}
     volumes:
@@ -129,7 +131,46 @@ services:
     ports:
       - 9323:9323
 
+  # Specmatic contract test runner for the backend OpenAPI contract.
+  specmatic-contract-runner:
+    image: specmatic/specmatic:2.50.0
+    volumes:
+      - .:/usr/src/app
+      - ./specmatic_contract.yaml:/usr/src/app/specmatic.yaml:ro
+    working_dir: /usr/src/app
+    command: >
+      test
+      --config=specmatic.yaml
+      --testBaseURL=http://backend:8000
+      --filter="!(PATH='/api/v1/password-recovery/{email}' && STATUS >= '400') && !(PATH='/api/v1/utils/health-check/' && STATUS = '400') && !(PATH = '/api/v1/private/users/' && (STATUS = '200' || STATUS = '400'))"
+    environment:
+      - OAuth2PasswordBearer=${SPECMATIC_AUTH_TOKEN}
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  # Specmatic generative resiliency runner for contract edge cases.
+  specmatic-resiliency-runner:
+    image: specmatic/specmatic:2.50.0
+    volumes:
+      - .:/usr/src/app
+      - ./specmatic_resiliency.yaml:/usr/src/app/specmatic.yaml:ro
+    working_dir: /usr/src/app
+    command: >
+      test
+      --config=specmatic.yaml
+      --testBaseURL=http://backend:8000
+      --filter="!(PATH='/api/v1/password-recovery/{email}' && STATUS >= '400') && !(PATH='/api/v1/utils/health-check/' && STATUS = '400') && !(PATH = '/api/v1/private/users/' && (STATUS = '200' || STATUS = '400'))"
+    environment:
+      - OAuth2PasswordBearer=${SPECMATIC_AUTH_TOKEN}
+    depends_on:
+      backend:
+        condition: service_healthy
+      specmatic-contract-runner:
+        condition: service_completed_successfully
+
 networks:
   traefik-public:
-    # For local dev, don't expect an external Traefik network
     external: false
+  specmatic-tests:
+    driver: bridge

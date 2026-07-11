@@ -1,0 +1,19 @@
+{
+    "http-request": {
+        "path": "/api/v1/items/",
+        "method": "GET",
+        "headers": {
+            "Accept": "application/json"
+        }
+    },
+    "http-response": {
+        "status": 403,
+        "body": {
+            "detail": "Could not validate credentials"
+        },
+        "status-text": "Forbidden",
+        "headers": {
+            "content-type": "application/json"
+        }
+    }
+}

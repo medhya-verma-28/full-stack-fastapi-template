@@ -1,0 +1,38 @@
+{
+    "http-request": {
+        "path": "/api/v1/users/signup",
+        "method": "POST",
+        "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "email": "not-an-email",
+            "password": "strong-password",
+            "full_name": "Medhya"
+        }
+    },
+    "http-response": {
+        "status": 422,
+        "body": {
+            "detail": [
+                {
+                    "type": "value_error",
+                    "loc": [
+                        "body",
+                        "email"
+                    ],
+                    "msg": "value is not a valid email address: An email address must have an @-sign.",
+                    "input": "not-an-email",
+                    "ctx": {
+                        "reason": "An email address must have an @-sign."
+                    }
+                }
+            ]
+        },
+        "status-text": "Unprocessable Entity",
+        "headers": {
+            "content-type": "application/json"
+        }
+    }
+}

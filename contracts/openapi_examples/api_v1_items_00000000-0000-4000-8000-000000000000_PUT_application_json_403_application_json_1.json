@@ -1,0 +1,23 @@
+{
+    "http-request": {
+        "path": "/api/v1/items/00000000-0000-4000-8000-000000000000",
+        "method": "PUT",
+        "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "title": "Updated notebook"
+        }
+    },
+    "http-response": {
+        "status": 403,
+        "body": {
+            "detail": "Could not validate credentials"
+        },
+        "status-text": "Forbidden",
+        "headers": {
+            "content-type": "application/json"
+        }
+    }
+}

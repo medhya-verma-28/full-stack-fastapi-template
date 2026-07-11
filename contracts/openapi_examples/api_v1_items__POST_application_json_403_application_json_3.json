@@ -1,0 +1,23 @@
+{
+    "http-request": {
+        "path": "/api/v1/items/",
+        "method": "POST",
+        "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "description": "Missing title"
+        }
+    },
+    "http-response": {
+        "status": 403,
+        "body": {
+            "detail": "Could not validate credentials"
+        },
+        "status-text": "Forbidden",
+        "headers": {
+            "content-type": "application/json"
+        }
+    }
+}

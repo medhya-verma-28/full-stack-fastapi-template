@@ -1,0 +1,1395 @@
+openapi: 3.0.1
+info:
+  title: proxy_generated
+  version: "1"
+paths:
+  /api/v1/items/00000000-0000-4000-8000-000000000000:
+    get:
+      summary: api_v1_items_00000000-0000-4000-8000-000000000000_GET_403_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "403":
+          description: api_v1_items_00000000-0000-4000-8000-000000000000_GET_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Items_00000000-0000-4000-8000-000000000000_GET_403_application_json_ResponseBody"
+    put:
+      summary: api_v1_items_00000000-0000-4000-8000-000000000000_PUT_application_json_403_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Api_V1_Items_00000000-0000-4000-8000-000000000000_PUT_application_json_RequestBody"
+        required: true
+      responses:
+        "403":
+          description: api_v1_items_00000000-0000-4000-8000-000000000000_PUT_application_json_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Items_00000000-0000-4000-8000-000000000000_PUT_403_application_json_ResponseBody"
+    delete:
+      summary: api_v1_items_00000000-0000-4000-8000-000000000000_DELETE_403_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "403":
+          description: api_v1_items_00000000-0000-4000-8000-000000000000_DELETE_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Items_00000000-0000-4000-8000-000000000000_DELETE_403_application_json_ResponseBody"
+  /api/v1/items/9f7ec459-963a-4d3f-9fbd-18c5602eaf44:
+    get:
+      summary: api_v1_items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_GET_401_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "403":
+          description: api_v1_items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_GET_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_GET_403_application_json_ResponseBody"
+    put:
+      summary: api_v1_items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_PUT_application_json_401_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Api_V1_Items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_PUT_application_json_RequestBody"
+        required: true
+      responses:
+        "403":
+          description: api_v1_items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_PUT_application_json_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_PUT_403_application_json_ResponseBody"
+    delete:
+      summary: api_v1_items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_DELETE_401_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "403":
+          description: api_v1_items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_DELETE_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_DELETE_403_application_json_ResponseBody"
+  /api/v1/items/not-a-uuid:
+    get:
+      summary: api_v1_items_not-a-uuid_GET_403_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "403":
+          description: api_v1_items_not-a-uuid_GET_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Items_Not-a-uuid_GET_403_application_json_ResponseBody"
+    put:
+      summary: api_v1_items_not-a-uuid_PUT_application_json_403_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Api_V1_Items_Not-a-uuid_PUT_application_json_RequestBody"
+        required: true
+      responses:
+        "403":
+          description: api_v1_items_not-a-uuid_PUT_application_json_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Items_Not-a-uuid_PUT_403_application_json_ResponseBody"
+    delete:
+      summary: api_v1_items_not-a-uuid_DELETE_403_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "403":
+          description: api_v1_items_not-a-uuid_DELETE_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Items_Not-a-uuid_DELETE_403_application_json_ResponseBody"
+  /api/v1/items/:
+    get:
+      summary: api_v1_items__GET_401_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: skip
+        in: query
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        schema:
+          type: integer 
+      responses:
+        "403":
+          description: api_v1_items__GET_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Items_GET_403_application_json_ResponseBody"
+    post:
+      summary: api_v1_items__POST_application_json_401_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Api_V1_Items_POST_application_json_RequestBody"
+        required: true
+      responses:
+        "403":
+          description: api_v1_items__POST_application_json_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Items_POST_403_application_json_ResponseBody"
+  /api/v1/login/access-token:
+    post:
+      summary: api_v1_login_access-token_POST_application_x-www-form-urlencoded_422_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      security:
+        - {}
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: string
+        required: true
+      responses:
+        "422":
+          description: api_v1_login_access-token_POST_application_x-www-form-urlencoded_422_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Login_Access-token_POST_422_application_json_ResponseBody"
+  /api/v1/login/test-token:
+    post:
+      summary: api_v1_login_test-token_POST_application_json_401_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "403":
+          description: api_v1_login_test-token_POST_application_json_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Login_Test-token_POST_403_application_json_ResponseBody"
+  /api/v1/password-recovery-html-content/missing@example.com:
+    post:
+      summary: api_v1_password-recovery-html-content_missing@example.com_POST_application_json_403_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "403":
+          description: api_v1_password-recovery-html-content_missing@example.com_POST_application_json_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Password-recovery-html-content_Missing_example.com_POST_403_application_json_ResponseBody"
+  /api/v1/password-recovery-html-content/not-an-email:
+    post:
+      summary: api_v1_password-recovery-html-content_not-an-email_POST_application_json_403_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "403":
+          description: api_v1_password-recovery-html-content_not-an-email_POST_application_json_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Password-recovery-html-content_Not-an-email_POST_403_application_json_ResponseBody"
+  /api/v1/password-recovery-html-content/user@example.com:
+    post:
+      summary: api_v1_password-recovery-html-content_user@example.com_POST_application_json_401_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "403":
+          description: api_v1_password-recovery-html-content_user@example.com_POST_application_json_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Password-recovery-html-content_User_example.com_POST_403_application_json_ResponseBody"
+  /api/v1/password-recovery/{email}:
+    post:
+      summary: api_v1_password-recovery_not-an-email_POST_application_json_200_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: email
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "200":
+          description: api_v1_password-recovery_not-an-email_POST_application_json_200_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Password-recovery_Not-an-email_POST_200_application_json_ResponseBody"
+        "400":
+          description: api_v1_password-recovery_not-an-email_POST_application_json_400_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Password-recovery_Not-an-email_POST_400_application_json_ResponseBody"
+  /api/v1/private/users/:
+    post:
+      summary: api_v1_private_users__POST_application_json_200_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Api_V1_Private_Users_POST_application_json_RequestBody"
+        required: true
+      responses:
+        "200":
+          description: api_v1_private_users__POST_application_json_200_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Private_Users_POST_200_application_json_ResponseBody"
+        "400":
+          description: api_v1_private_users__POST_application_json_200_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Private_Users_POST_400_application_json_ResponseBody"
+        "500":
+          description: api_v1_private_users__POST_application_json_500_text_plain_1
+          content:
+            text/plain:
+              schema:
+                type: string
+  /api/v1/reset-password/:
+    post:
+      summary: api_v1_reset-password__POST_application_json_400_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Api_V1_Reset-password_POST_application_json_RequestBody"
+        required: true
+      responses:
+        "400":
+          description: api_v1_reset-password__POST_application_json_400_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Reset-password_POST_400_application_json_ResponseBody"
+        "422":
+          description: api_v1_reset-password__POST_application_json_422_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Reset-password_POST_422_application_json_ResponseBody"
+  /api/v1/users/00000000-0000-4000-8000-000000000000:
+    get:
+      summary: api_v1_users_00000000-0000-4000-8000-000000000000_GET_403_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "403":
+          description: api_v1_users_00000000-0000-4000-8000-000000000000_GET_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Users_00000000-0000-4000-8000-000000000000_GET_403_application_json_ResponseBody"
+    delete:
+      summary: api_v1_users_00000000-0000-4000-8000-000000000000_DELETE_403_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "403":
+          description: api_v1_users_00000000-0000-4000-8000-000000000000_DELETE_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Users_00000000-0000-4000-8000-000000000000_DELETE_403_application_json_ResponseBody"
+    patch:
+      summary: api_v1_users_00000000-0000-4000-8000-000000000000_PATCH_application_json_403_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Api_V1_Users_00000000-0000-4000-8000-000000000000_PATCH_application_json_RequestBody"
+        required: true
+      responses:
+        "403":
+          description: api_v1_users_00000000-0000-4000-8000-000000000000_PATCH_application_json_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Users_00000000-0000-4000-8000-000000000000_PATCH_403_application_json_ResponseBody"
+  /api/v1/users/39e3ac43-a00f-4f53-8cfa-4f3fd7432519:
+    get:
+      summary: api_v1_users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_GET_401_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "403":
+          description: api_v1_users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_GET_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_GET_403_application_json_ResponseBody"
+    delete:
+      summary: api_v1_users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_DELETE_401_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "403":
+          description: api_v1_users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_DELETE_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_DELETE_403_application_json_ResponseBody"
+    patch:
+      summary: api_v1_users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_PATCH_application_json_401_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Api_V1_Users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_PATCH_application_json_RequestBody"
+        required: true
+      responses:
+        "403":
+          description: api_v1_users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_PATCH_application_json_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_PATCH_403_application_json_ResponseBody"
+  /api/v1/users/me:
+    get:
+      summary: api_v1_users_me_GET_401_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "403":
+          description: api_v1_users_me_GET_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Users_Me_GET_403_application_json_ResponseBody"
+    delete:
+      summary: api_v1_users_me_DELETE_401_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "403":
+          description: api_v1_users_me_DELETE_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Users_Me_DELETE_403_application_json_ResponseBody"
+    patch:
+      summary: api_v1_users_me_PATCH_application_json_401_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Api_V1_Users_Me_PATCH_application_json_RequestBody"
+        required: true
+      responses:
+        "403":
+          description: api_v1_users_me_PATCH_application_json_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Users_Me_PATCH_403_application_json_ResponseBody"
+  /api/v1/users/me/password:
+    patch:
+      summary: api_v1_users_me_password_PATCH_application_json_401_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Api_V1_Users_Me_Password_PATCH_application_json_RequestBody"
+        required: true
+      responses:
+        "403":
+          description: api_v1_users_me_password_PATCH_application_json_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Users_Me_Password_PATCH_403_application_json_ResponseBody"
+  /api/v1/users/not-a-uuid:
+    get:
+      summary: api_v1_users_not-a-uuid_GET_403_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "403":
+          description: api_v1_users_not-a-uuid_GET_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Users_Not-a-uuid_GET_403_application_json_ResponseBody"
+    delete:
+      summary: api_v1_users_not-a-uuid_DELETE_403_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "403":
+          description: api_v1_users_not-a-uuid_DELETE_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Users_Not-a-uuid_DELETE_403_application_json_ResponseBody"
+    patch:
+      summary: api_v1_users_not-a-uuid_PATCH_application_json_403_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Api_V1_Users_Not-a-uuid_PATCH_application_json_RequestBody"
+        required: true
+      responses:
+        "403":
+          description: api_v1_users_not-a-uuid_PATCH_application_json_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Users_Not-a-uuid_PATCH_403_application_json_ResponseBody"
+  /api/v1/users/signup:
+    post:
+      summary: api_v1_users_signup_POST_application_json_200_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Api_V1_Users_Signup_POST_application_json_RequestBody"
+        required: true
+      responses:
+        "422":
+          description: api_v1_users_signup_POST_application_json_422_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Users_Signup_POST_422_application_json_ResponseBody"
+  /api/v1/users/:
+    get:
+      summary: api_v1_users__GET_401_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: skip
+        in: query
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      responses:
+        "403":
+          description: api_v1_users__GET_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Users_GET_403_application_json_ResponseBody"
+    post:
+      summary: api_v1_users__POST_application_json_401_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Api_V1_Users_POST_application_json_RequestBody"
+        required: true
+      responses:
+        "403":
+          description: api_v1_users__POST_application_json_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Users_POST_403_application_json_ResponseBody"
+  /api/v1/utils/health-check/:
+    get:
+      summary: api_v1_utils_health-check__GET_200_application_json_1
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: api_v1_utils_health-check__GET_200_application_json_1
+          content:
+            application/json:
+              schema:
+                type: boolean
+        "400":
+          description: api_v1_utils_health-check__GET_400_application_json_1
+          content:
+            application/json:
+              schema:
+                type: boolean
+  /api/v1/utils/test-email/:
+    post:
+      summary: api_v1_utils_test-email__POST_application_json_401_application_json_1
+      parameters:
+      - name: email_to
+        in: query
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "403":
+          description: api_v1_utils_test-email__POST_application_json_403_application_json_1
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Api_V1_Utils_Test-email_POST_403_application_json_ResponseBody"
+components:
+  schemas:
+    Api_V1_Items_00000000-0000-4000-8000-000000000000_DELETE_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Items_00000000-0000-4000-8000-000000000000_GET_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Items_00000000-0000-4000-8000-000000000000_PUT_application_json_RequestBody:
+      required:
+      - title
+      type: object
+      properties:
+        title:
+          type: string
+    Api_V1_Items_00000000-0000-4000-8000-000000000000_PUT_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_DELETE_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_DELETE_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_GET_200_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_GET_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_GET_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_PUT_application_json_RequestBody:
+      required:
+      - title
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+    Api_V1_Items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_PUT_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Items_9f7ec459-963a-4d3f-9fbd-18c5602eaf44_PUT_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Items_Not-a-uuid_DELETE_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Items_Not-a-uuid_GET_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Items_Not-a-uuid_PUT_application_json_RequestBody:
+      required:
+      - title
+      type: object
+      properties:
+        title:
+          type: string
+    Api_V1_Items_Not-a-uuid_PUT_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Items_GET_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Items_GET_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Items_POST_application_json_RequestBody:
+      type: object
+      properties:
+        description:
+          type: string
+        title:
+          type: string
+    Api_V1_Items_POST_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Items_POST_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Detail:
+      required:
+      - input
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+        loc:
+          type: array
+          items:
+            type: string
+        msg:
+          type: string
+        input:
+          oneOf:
+          - properties: {}
+          - $ref: "#/components/schemas/Input"
+        ctx:
+          $ref: "#/components/schemas/Ctx"
+    Api_V1_Login_Access-token_POST_422_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: "#/components/schemas/Detail"
+    Api_V1_Login_Test-token_POST_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Login_Test-token_POST_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Password-recovery-html-content_Missing_example.com_POST_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Password-recovery-html-content_Not-an-email_POST_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Password-recovery-html-content_User_example.com_POST_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Password-recovery-html-content_User_example.com_POST_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Password-recovery_Not-an-email_POST_200_application_json_ResponseBody:
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+    Api_V1_Password-recovery_Not-an-email_POST_400_application_json_ResponseBody:
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+    Api_V1_Password-recovery_User_example.com_POST_200_application_json_ResponseBody:
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+    Api_V1_Password-recovery_User_example.com_POST_400_application_json_ResponseBody:
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+    Api_V1_Private_Users_POST_application_json_RequestBody:
+      required:
+      - email
+      - full_name
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        full_name:
+          type: string
+        is_verified:
+          type: boolean
+    Api_V1_Private_Users_POST_200_application_json_ResponseBody:
+      required:
+      - created_at
+      - email
+      - full_name
+      - id
+      - is_active
+      - is_superuser
+      type: object
+      properties:
+        email:
+          type: string
+        is_active:
+          type: boolean
+        is_superuser:
+          type: boolean
+        full_name:
+          type: string
+        id:
+          type: string
+        created_at:
+          type: string
+    Api_V1_Private_Users_POST_400_application_json_ResponseBody:
+      required:
+        - message
+      type: object
+      properties:
+        message:
+          type: string
+    Api_V1_Reset-password_POST_application_json_RequestBody:
+      required:
+      - token
+      type: object
+      properties:
+        token:
+          type: string
+        new_password:
+          type: string
+    Api_V1_Reset-password_POST_400_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Input:
+      required:
+      - token
+      type: object
+      properties:
+        token:
+          type: string
+    Api_V1_Reset-password_POST_422_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: "#/components/schemas/Detail"
+    Api_V1_Users_00000000-0000-4000-8000-000000000000_DELETE_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_00000000-0000-4000-8000-000000000000_GET_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_00000000-0000-4000-8000-000000000000_PATCH_application_json_RequestBody:
+      required:
+      - full_name
+      type: object
+      properties:
+        full_name:
+          type: string
+    Api_V1_Users_00000000-0000-4000-8000-000000000000_PATCH_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_DELETE_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_DELETE_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_GET_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string   
+    Api_V1_Users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_GET_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_PATCH_application_json_RequestBody:
+      type: object
+      properties:
+        email:
+          type: string
+        full_name:
+          type: string
+        is_active:
+          type: boolean
+        is_superuser:
+          type: boolean
+        password:
+          type: string
+    Api_V1_Users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_PATCH_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_39e3ac43-a00f-4f53-8cfa-4f3fd7432519_PATCH_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_Me_DELETE_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_Me_DELETE_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_Me_GET_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_Me_GET_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_Me_Password_PATCH_application_json_RequestBody:
+      required:
+      - current_password
+      - new_password
+      type: object
+      properties:
+        current_password:
+          type: string
+        new_password:
+          type: string
+    Api_V1_Users_Me_Password_PATCH_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_Me_Password_PATCH_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_Me_PATCH_application_json_RequestBody:
+      type: object
+      properties:
+        email:
+          type: string
+        full_name:
+          type: string
+    Api_V1_Users_Me_PATCH_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_Me_PATCH_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_Not-a-uuid_DELETE_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_Not-a-uuid_GET_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_Not-a-uuid_PATCH_application_json_RequestBody:
+      required:
+      - full_name
+      type: object
+      properties:
+        full_name:
+          type: string
+    Api_V1_Users_Not-a-uuid_PATCH_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_Signup_POST_application_json_RequestBody:
+      required:
+      - email
+      - password
+      - full_name
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        full_name:
+          type: string
+    Api_V1_Users_Signup_POST_200_application_json_ResponseBody:
+      required:
+      - created_at
+      - email
+      - full_name
+      - id
+      - is_active
+      - is_superuser
+      type: object
+      properties:
+        email:
+          type: string
+        is_active:
+          type: boolean
+        is_superuser:
+          type: boolean
+        full_name:
+          type: string
+        id:
+          type: string
+        created_at:
+          type: string
+    Api_V1_Users_Signup_POST_400_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Ctx:
+      required:
+      - reason
+      type: object
+      properties:
+        reason:
+          type: string
+    Api_V1_Users_Signup_POST_422_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: "#/components/schemas/Detail"
+    Api_V1_Users_GET_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_GET_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_POST_application_json_RequestBody:
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        is_active:
+          type: boolean
+        is_superuser:
+          type: boolean
+        full_name:
+          type: string
+    Api_V1_Users_POST_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Users_POST_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Utils_Test-email_POST_:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+    Api_V1_Utils_Test-email_POST_403_application_json_ResponseBody:
+      required:
+      - detail
+      type: object
+      properties:
+        detail:
+          type: string
+  securitySchemes:
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: /api/v1/login/access-token
+          scopes: {}
+security:
+- OAuth2PasswordBearer: []

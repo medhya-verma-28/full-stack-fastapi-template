@@ -1,0 +1,22 @@
+{
+    "http-request": {
+        "path": "/api/v1/login/test-token",
+        "method": "POST",
+        "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        "body": ""
+    },
+    "http-response": {
+        "status": 403,
+        "body": {
+            "detail": "Not authenticated"
+        },
+        "status-text": "Unauthorized",
+        "headers": {
+            
+            "content-type": "application/json"
+        }
+    }
+}

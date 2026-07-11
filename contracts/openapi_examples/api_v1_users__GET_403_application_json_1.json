@@ -1,0 +1,23 @@
+{
+    "http-request": {
+        "path": "/api/v1/users/",
+        "method": "GET",
+        "query": {
+            "skip": 0,
+            "limit": 100
+        },
+        "headers": {
+            "Accept": "application/json"
+        }
+    },
+    "http-response": {
+        "status": 403,
+        "body": {
+            "detail": "Could not validate credentials"
+        },
+        "status-text": "Forbidden",
+        "headers": {
+            "content-type": "application/json"
+        }
+    }
+}

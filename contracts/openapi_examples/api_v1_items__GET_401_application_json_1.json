@@ -1,0 +1,20 @@
+{
+    "http-request": {
+        "path": "/api/v1/items/",
+        "method": "GET",
+        "headers": {
+            "Accept": "application/json"
+        }
+    },
+    "http-response": {
+        "status": 401,
+        "body": {
+            "detail": "Not authenticated"
+        },
+        "status-text": "Unauthorized",
+        "headers": {
+            
+            "content-type": "application/json"
+        }
+    }
+}

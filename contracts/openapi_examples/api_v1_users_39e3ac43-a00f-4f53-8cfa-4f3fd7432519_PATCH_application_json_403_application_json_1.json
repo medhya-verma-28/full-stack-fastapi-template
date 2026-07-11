@@ -1,0 +1,27 @@
+{
+    "http-request": {
+        "path": "/api/v1/users/39e3ac43-a00f-4f53-8cfa-4f3fd7432519",
+        "method": "PATCH",
+        "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "email": "member.updated@example.com",
+            "is_active": true,
+            "is_superuser": false,
+            "full_name": "Member Updated",
+            "password": "optional-new-password"
+        }
+    },
+    "http-response": {
+        "status": 403,
+        "body": {
+            "detail": "Could not validate credentials"
+        },
+        "status-text": "Forbidden",
+        "headers": {
+            "content-type": "application/json"
+        }
+    }
+}

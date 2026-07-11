@@ -1,0 +1,24 @@
+{
+    "http-request": {
+        "path": "/api/v1/items/",
+        "method": "POST",
+        "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "title": "Notebook"
+        }
+    },
+    "http-response": {
+        "status": 401,
+        "body": {
+            "detail": "Not authenticated"
+        },
+        "status-text": "Unauthorized",
+        "headers": {
+            
+            "content-type": "application/json"
+        }
+    }
+}

@@ -1,0 +1,71 @@
+name: Specmatic Contract & Resiliency Testing CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  specmatic-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Fetch the code from the repository
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # 2. Build the application and run all Specmatic test runners via Compose in detached mode.
+    # The --build flag ensures the latest FastAPI Dockerfile updates are pulled in.
+    - name: Run Specmatic Test Stack
+      run: docker compose up --build -d
+
+    # 3. Block and wait for the Specmatic test runner containers to finish execution
+    - name: Wait for Test Completion
+      run: |
+        echo "Monitoring Specmatic test execution..."
+        # Wait for the contract runner and resiliency runner containers to finish executing tests
+        docker wait specmatic-contract-runner || true
+        docker wait specmatic-resiliency-runner || true
+
+    # 4. Inspect the test exit codes to determine if the CI pass/fails
+    - name: Check Exit Codes
+      run: |
+        # Inspect exit codes of the runner services to verify 100% success metrics
+        CONTRACT_EXIT=$(docker inspect specmatic-contract-runner --format='{{.State.ExitCode}}')
+        RESILIENCY_EXIT=$(docker inspect specmatic-resiliency-runner --format='{{.State.ExitCode}}')
+        
+        echo "Contract Test Runner Exit Code: $CONTRACT_EXIT"
+        echo "Resiliency Test Runner Exit Code: $RESILIENCY_EXIT"
+        
+        if [ "$CONTRACT_EXIT" -ne 0 ] || [ "$RESILIENCY_EXIT" -ne 0 ]; then
+          echo "Specmatic tests failed!"
+          exit 1
+        fi
+        echo "All Specmatic contract and resiliency tests passed successfully!"
+
+    # 5. Dump real-time container logs only if a failure occurs anywhere in the pipeline
+    - name: Print Specmatic Tests Container Logs
+      if: always()
+      run: |
+        echo "=== PostgreSQL Database Logs ==="
+        docker compose logs db || true
+        echo "=== FastAPI Backend Application Logs ==="
+        docker compose logs backend || true
+        echo "=== Contract Test Logs ==="
+        docker compose logs specmatic-contract-runner || true
+        echo "=== Resiliency Test Logs ==="
+        docker compose logs specmatic-resiliency-runner || true
+
+    # 6. Archive and save HTML reports to your GitHub Dashboard
+    - name: Upload Test Report Artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: specmatic-test-reports
+        path: build/reports/  
+
+    # 7. Tear down the environment completely, wiping any volumes generated during testing
+    - name: Teardown environment
+      if: always()
+      run: docker compose down -v

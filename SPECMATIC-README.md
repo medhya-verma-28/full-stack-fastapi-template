@@ -1,3 +1,7 @@
+# Introduction to Specmatic
+
+Specmatic is a spec-driven API development, testing and governance platform that turns API specifications into executable contracts. Instead of treating an OpenAPI or AsyncAPI document as static documentation, Specmatic uses industry standard API specs to automatically generate tests, mocks, compatibility checks, workflows, and governance capabilities.
+
 # Specmatic Contract and Resiliency Tests
 
 This project keeps the Specmatic setup outside the FastAPI application code. The backend contract lives in `backend/contracts/openapi.yaml`, shared schemas live in `backend/schema/schemas.json`, and concrete examples live in `backend/contracts/openapi_examples/`.

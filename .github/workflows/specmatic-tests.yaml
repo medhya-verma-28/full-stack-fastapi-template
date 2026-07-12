@@ -25,8 +25,8 @@ jobs:
       run: |
         echo "Monitoring Specmatic test execution..."
         # Wait for the contract runner and resiliency runner containers to finish executing tests
-        docker wait specmatic-contract-runner || true
-        docker wait specmatic-resiliency-runner || true
+        docker wait specmatic-contract-runner-1 || true
+        docker wait specmatic-resiliency-runner-1 || true
 
     # 4. Inspect the test exit codes to determine if the CI pass/fails
     - name: Check Exit Codes
@@ -49,13 +49,13 @@ jobs:
       if: always()
       run: |
         echo "=== PostgreSQL Database Logs ==="
-        docker compose logs db || true
+        docker compose logs db-1 || true
         echo "=== FastAPI Backend Application Logs ==="
-        docker compose logs backend || true
+        docker compose logs backend-1 || true
         echo "=== Contract Test Logs ==="
-        docker compose logs specmatic-contract-runner || true
+        docker compose logs specmatic-contract-runner-1 || true
         echo "=== Resiliency Test Logs ==="
-        docker compose logs specmatic-resiliency-runner || true
+        docker compose logs specmatic-resiliency-runner-1 || true
 
     # 6. Archive and save HTML reports to your GitHub Dashboard
     - name: Upload Test Report Artifacts

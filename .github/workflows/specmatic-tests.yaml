@@ -2,7 +2,7 @@ name: Specmatic Contract & Resiliency Testing CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, specmatic_integration ]
   pull_request:
     branches: [ master ]
 

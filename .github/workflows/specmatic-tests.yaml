@@ -38,7 +38,7 @@ jobs:
 
       - name: Run Specmatic Contract Tests
         run: |
-          docker compose exec -T backend python specmatic-auth.py
+          docker compose exec -T backend python ./specmatic-auth.py
 
       - name: Extract Specmatic Reports from Container
         if: always()
@@ -50,7 +50,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: specmatic-contract-test-reports
+          name: specmatic-test-reports
           path: ./specmatic-reports/
           retention-days: 5
 

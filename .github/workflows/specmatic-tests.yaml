@@ -36,15 +36,15 @@ jobs:
         run: |
           docker compose exec -T backend bash -c "while ! curl -s http://localhost:8000/api/v1/utils/health-check/; do sleep 1; done"
 
-      - name: Generate Specmatic Auth Token
+      - name: Generate and Update Token Step
         run: |
-          # Run the auth script inside the application container workspace
-          docker compose exec -T backend python /app/specmatic-auth.py
+          # Mount the script from the repository's project root directly into the running container
+          docker run --rm --network=host -v ${{ github.workspace }}:/workspace -w /workspace python:3.10-slim bash -c "
+            pip install requests && 
+            python specmatic-auth.py
+          "
           
-          # Pull the generated token text file out to the host pipeline runner
-          docker compose cp backend:/app/specmatic_token.txt ./specmatic_token.txt || true
-          
-          # Read value and immediately apply a log mask to safeguard outputs
+          # Read the generated token file out of the workspace root and apply log masking
           TOKEN_VALUE=$(cat ./specmatic_token.txt)
           echo "::add-mask::$TOKEN_VALUE"
           echo "SPECMATIC_TOKEN=$TOKEN_VALUE" >> $GITHUB_ENV
@@ -54,18 +54,12 @@ jobs:
         with:
           name: SPECMATIC_AUTH_TOKEN
           value: ${{ env.SPECMATIC_TOKEN }}
-          # Authenticating using your newly registered personal access token secret
           token: ${{ secrets.SPECMATIC_AUTH_TOKEN_WRITE_PERMISSION }}
 
-      - name: Re-inject Fresh Token to Running Service Environment
+      - name: Run Specmatic Contract Tests via Pytest
         run: |
-          # Pass token dynamically into backend environment without dropping db connections
-          SPECMATIC_AUTH_TOKEN="${{ env.SPECMATIC_TOKEN }}" docker compose -f compose.yml -f compose.override.yml up -d backend
-
-      - name: Run Specmatic Contract Tests
-        run: |
-          # Trigger contract validation suites down against your active api context
-          docker compose exec -T backend echo "Executing Specmatic verification suite..."
+          # Inject the token dynamically and trigger pytest on the backend service
+          docker compose exec -T -e SPECMATIC_AUTH_TOKEN="${{ env.SPECMATIC_TOKEN }}" backend pytest
 
       - name: Extract Specmatic Reports from Container
         if: always()
@@ -85,3 +79,4 @@ jobs:
         if: always()
         run: |
           docker compose -f compose.yml -f compose.override.yml down -v
+

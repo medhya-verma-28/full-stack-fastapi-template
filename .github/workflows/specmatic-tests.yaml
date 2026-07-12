@@ -38,14 +38,13 @@ jobs:
 
       - name: Generate and Update Token Step
         run: |
-          # Added PyJWT to the dependency layer installer inside the isolated root environment worker
-          docker run --rm --network=host -v ${{ github.workspace }}:/workspace -w /workspace python:3.10-slim bash -c "
-            pip install requests PyJWT && 
+          # Capture the stdout directly from the python container execution block
+          TOKEN_VALUE=$(docker run --rm --network=host -v ${{ github.workspace }}:/workspace -w /workspace python:3.10-slim bash -c "
+            pip install -q requests PyJWT && 
             python specmatic-auth.py
-          "
+          " | tail -n 1 | tr -d '\r\n')
           
-          # Read the generated token file from the workspace root and apply log masking
-          TOKEN_VALUE=$(cat ./specmatic_token.txt)
+          # Clean and register the token value inside the runner environment lifecycle
           echo "::add-mask::$TOKEN_VALUE"
           echo "SPECMATIC_TOKEN=$TOKEN_VALUE" >> $GITHUB_ENV
 

@@ -26,7 +26,7 @@ jobs:
       - name: Build and Start Stack with Override
         run: |
           # Corrected file extensions to match full-stack-fastapi-template defaults (.yaml)
-          docker compose -f compose.yaml -f compose.override.yaml up -d db backend
+          docker compose -f compose.yml -f compose.override.yml up -d db backend
 
       - name: Wait for Backend Readiness
         run: |
@@ -64,15 +64,15 @@ jobs:
         if: always()
         run: |
           # Using sudo forces execution past potential root-user container file lock constraints safely
-          sudo mkdir -p ./specmatic-reports
-          sudo cp -r ./build/reports/ ./specmatic-reports/ || true
+          sudo mkdir -p ./specmatic-test-reports
+          sudo cp -r ./build/reports/ ./specmatic-test-reports/ || true
 
       - name: Upload Specmatic Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: specmatic-contract-test-reports
-          path: ./specmatic-reports/
+          name: specmatic-test-reports
+          path: ./specmatic-test-reports/
           retention-days: 5
 
       - name: Stop and Clean Stack

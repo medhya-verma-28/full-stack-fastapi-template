@@ -34,11 +34,30 @@ jobs:
 
       - name: Wait for Backend Readiness
         run: |
-          docker compose exec -T backend bash -c "while ! curl -s http://localhost:8000/health-check/; do sleep 1; done"
+          docker compose exec -T backend bash -c "while ! curl -s http://localhost:8000/api/v1/utils/health-check/; do sleep 1; done"
 
       - name: Run Specmatic Contract Tests
         run: |
-          docker compose exec -T backend python ./specmatic-auth.py
+          docker compose exec -T backend python specmatic-auth.py
+
+      - name: Extract Generated Token from Container
+        run: |
+          # Pull the generated token file out of the isolated container
+          docker compose cp backend:/app/specmatic_token.txt ./specmatic_token.txt || true
+          
+          # Read it to an environment variable, then immediately mask it to avoid log leaks
+          TOKEN_VALUE=$(cat ./specmatic_token.txt)
+          echo "::add-mask::$TOKEN_VALUE"
+          echo "SPECMATIC_TOKEN=$TOKEN_VALUE" >> $GITHUB_ENV
+
+      - name: Update GitHub Secret Programmatically
+        uses: gliech/create-github-secret-action@v1
+        with:
+          name: 'SPECMATIC_AUTH_TOKEN'
+          value: ${{ env.SPECMATIC_TOKEN }}
+          repository: ${{ github.repository }}
+          # Requires a custom PAT stored in your repository secrets with write:secrets scope
+          token: ${{ secrets.SPECMATIC_CI_PAT }}
 
       - name: Extract Specmatic Reports from Container
         if: always()
@@ -50,7 +69,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: specmatic-test-reports
+          name: specmatic-contract-test-reports
           path: ./specmatic-reports/
           retention-days: 5
 
@@ -58,3 +77,4 @@ jobs:
         if: always()
         run: |
           docker compose -f compose.yml -f compose.override.yml down -v
+

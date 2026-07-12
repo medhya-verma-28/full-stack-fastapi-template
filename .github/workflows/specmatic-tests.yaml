@@ -58,38 +58,3 @@ jobs:
         if: always()
         run: |
           docker compose -f compose.yml -f compose.override.yml down -v
-        
-        echo "Contract Test Runner Exit Code: $CONTRACT_EXIT"
-        echo "Resiliency Test Runner Exit Code: $RESILIENCY_EXIT"
-        
-        if [ "$CONTRACT_EXIT" -ne 0 ] || [ "$RESILIENCY_EXIT" -ne 0 ]; then
-          echo "Specmatic tests failed!"
-          exit 1
-        fi
-        echo "All Specmatic contract and resiliency tests passed successfully!"
-
-    # 5. Dump real-time container logs only if a failure occurs anywhere in the pipeline
-    - name: Print Specmatic Tests Container Logs
-      if: always()
-      run: |
-        echo "=== PostgreSQL Database Logs ==="
-        docker compose logs db-1 || true
-        echo "=== FastAPI Backend Application Logs ==="
-        docker compose logs backend-1 || true
-        echo "=== Contract Test Logs ==="
-        docker compose logs specmatic-contract-runner-1 || true
-        echo "=== Resiliency Test Logs ==="
-        docker compose logs specmatic-resiliency-runner-1 || true
-
-    # 6. Archive and save HTML reports to your GitHub Dashboard
-    - name: Upload Test Report Artifacts
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: specmatic-test-reports
-        path: build/reports/  
-
-    # 7. Tear down the environment completely, wiping any volumes generated during testing
-    - name: Teardown environment
-      if: always()
-      run: docker compose down -v

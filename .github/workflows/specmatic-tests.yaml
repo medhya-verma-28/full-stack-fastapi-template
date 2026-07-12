@@ -23,14 +23,10 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
-
       - name: Build and Start Stack with Override
         run: |
-          docker compose -f compose.yml -f compose.override.yml up -d db backend
+          # Corrected file extensions to match full-stack-fastapi-template defaults (.yaml)
+          docker compose -f compose.yaml -f compose.override.yaml up -d db backend
 
       - name: Wait for Backend Readiness
         run: |
@@ -38,13 +34,12 @@ jobs:
 
       - name: Generate and Update Token Step
         run: |
-          # Capture the stdout directly from the python container execution block
+          # Dynamically execute your root-level auth script and isolate the token output string cleanly
           TOKEN_VALUE=$(docker run --rm --network=host -v ${{ github.workspace }}:/workspace -w /workspace python:3.10-slim bash -c "
             pip install -q requests PyJWT && 
             python specmatic-auth.py
           " | tail -n 1 | tr -d '\r\n')
           
-          # Clean and register the token value inside the runner environment lifecycle
           echo "::add-mask::$TOKEN_VALUE"
           echo "SPECMATIC_TOKEN=$TOKEN_VALUE" >> $GITHUB_ENV
 
@@ -53,18 +48,24 @@ jobs:
         with:
           name: SPECMATIC_AUTH_TOKEN
           value: ${{ env.SPECMATIC_TOKEN }}
-          token: ${{ secrets.SPECMATIC_AUTH_TOKEN_WRITE_PERMISSION }}
+          pa_token: ${{ secrets.SPECMATIC_AUTH_TOKEN_WRITE_PERMISSION }}
 
-      - name: Run Specmatic Contract Tests via Pytest
+      - name: Run Specmatic Contract Tests via Docker Compose
         run: |
-          # Inject the token dynamically and trigger pytest on the backend service
-          docker compose exec -T -e SPECMATIC_AUTH_TOKEN="${{ env.SPECMATIC_TOKEN }}" backend pytest
+          # Executes your contract test target inside your existing compose runtime definition layer
+          SPECMATIC_AUTH_TOKEN="${{ env.SPECMATIC_TOKEN }}" docker compose -f compose.yaml -f compose.override.yaml run --rm specmatic-contract-runner
+
+      - name: Run Specmatic Resiliency Tests via Docker Compose
+        run: |
+          # Executes your fuzzed resiliency test target inside your existing compose runtime definition layer
+          SPECMATIC_AUTH_TOKEN="${{ env.SPECMATIC_TOKEN }}" docker compose -f compose.yaml -f compose.override.yaml run --rm specmatic-resiliency-runner
 
       - name: Extract Specmatic Reports from Container
         if: always()
         run: |
-          mkdir -p ./specmatic-reports
-          docker compose cp backend:/app/build/reports/specmatic-tests/ ./specmatic-reports/ || true
+          # Using sudo forces execution past potential root-user container file lock constraints safely
+          sudo mkdir -p ./specmatic-reports
+          sudo cp -r ./build/reports/ ./specmatic-reports/ || true
 
       - name: Upload Specmatic Artifacts
         if: always()
@@ -77,4 +78,4 @@ jobs:
       - name: Stop and Clean Stack
         if: always()
         run: |
-          docker compose -f compose.yml -f compose.override.yml down -v
+          docker compose -f compose.yaml -f compose.override.yaml down -v

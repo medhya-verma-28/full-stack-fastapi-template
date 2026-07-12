@@ -78,4 +78,4 @@ jobs:
       - name: Stop and Clean Stack
         if: always()
         run: |
-          docker compose -f compose.yaml -f compose.override.yaml down -v
+          docker compose -f compose.yml -f compose.override.yml down -v

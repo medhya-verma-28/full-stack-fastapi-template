@@ -53,12 +53,12 @@ jobs:
       - name: Run Specmatic Contract Tests via Docker Compose
         run: |
           # Executes your contract test target inside your existing compose runtime definition layer
-          SPECMATIC_AUTH_TOKEN="${{ env.SPECMATIC_TOKEN }}" docker compose -f compose.yaml -f compose.override.yaml run --rm specmatic-contract-runner
+          SPECMATIC_AUTH_TOKEN="${{ env.SPECMATIC_TOKEN }}" docker compose -f compose.yml -f compose.override.yml run --rm specmatic-contract-runner
 
       - name: Run Specmatic Resiliency Tests via Docker Compose
         run: |
           # Executes your fuzzed resiliency test target inside your existing compose runtime definition layer
-          SPECMATIC_AUTH_TOKEN="${{ env.SPECMATIC_TOKEN }}" docker compose -f compose.yaml -f compose.override.yaml run --rm specmatic-resiliency-runner
+          SPECMATIC_AUTH_TOKEN="${{ env.SPECMATIC_TOKEN }}" docker compose -f compose.yml -f compose.override.yml run --rm specmatic-resiliency-runner
 
       - name: Extract Specmatic Reports from Container
         if: always()

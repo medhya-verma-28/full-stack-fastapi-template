@@ -1,39 +1,63 @@
-name: Specmatic Contract & Resiliency Testing CI
+name: Specmatic CI
 
 on:
   push:
-    branches: [ master, specmatic_integration ]
+    branches:
+      - master
+      - specmatic_integration
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
+      - specmatic_integration
 
 jobs:
   specmatic-tests:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Fetch the code from the repository
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    # 2. Build the application and run all Specmatic test runners via Compose in detached mode.
-    # The --build flag ensures the latest FastAPI Dockerfile updates are pulled in.
-    - name: Run Specmatic Test Stack
-      run: docker compose up --build -d
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
 
-    # 3. Block and wait for the Specmatic test runner containers to finish execution
-    - name: Wait for Test Completion
-      run: |
-        echo "Monitoring Specmatic test execution..."
-        # Wait for the contract runner and resiliency runner containers to finish executing tests
-        docker wait specmatic-contract-runner-1 || true
-        docker wait specmatic-resiliency-runner-1 || true
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
 
-    # 4. Inspect the test exit codes to determine if the CI pass/fails
-    - name: Check Exit Codes
-      run: |
-        # Inspect exit codes of the runner services to verify 100% success metrics
-        CONTRACT_EXIT=$(docker inspect specmatic-contract-runner --format='{{.State.ExitCode}}')
-        RESILIENCY_EXIT=$(docker inspect specmatic-resiliency-runner --format='{{.State.ExitCode}}')
+      - name: Build and Start Stack with Override
+        run: |
+          docker compose -f compose.yml -f compose.override.yml up -d db backend
+
+      - name: Wait for Backend Readiness
+        run: |
+          docker compose exec -T backend bash -c "while ! curl -s http://localhost:8000/health-check/; do sleep 1; done"
+
+      - name: Run Specmatic Contract Tests
+        run: |
+          docker compose exec -T backend python specmatic-auth.py
+
+      - name: Extract Specmatic Reports from Container
+        if: always()
+        run: |
+          mkdir -p ./specmatic-reports
+          docker compose cp backend:/app/build/reports/specmatic-tests/ ./specmatic-reports/ || true
+
+      - name: Upload Specmatic Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: specmatic-contract-test-reports
+          path: ./specmatic-reports/
+          retention-days: 5
+
+      - name: Stop and Clean Stack
+        if: always()
+        run: |
+          docker compose -f compose.yml -f compose.override.yml down -v
         
         echo "Contract Test Runner Exit Code: $CONTRACT_EXIT"
         echo "Resiliency Test Runner Exit Code: $RESILIENCY_EXIT"

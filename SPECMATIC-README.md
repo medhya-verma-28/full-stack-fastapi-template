@@ -1,76 +1,77 @@
 # Introduction to Specmatic
 
-Specmatic is a spec-driven API development, testing and governance platform that turns API specifications into executable contracts. Instead of treating an OpenAPI or AsyncAPI document as static documentation, Specmatic uses industry standard API specs to automatically generate tests, mocks, compatibility checks, workflows, and governance capabilities.
+[Specmatic](https://specmatic.io) is a spec-driven API development, testing and governance platform that turns API specifications into executable contracts. Instead of treating an OpenAPI or AsyncAPI document as static documentation, Specmatic uses industry standard API specs to automatically generate tests, mocks, compatibility checks, workflows, and governance capabilities.
 
-# Specmatic Contract and Resiliency Tests
+## Improvements Made Through Specmatic in the PR
+The original `fastapi/full-stack-fastapi-template` relies primarily on standard **Pytest** suites and **Playwright** end-to-end tests. While effective, standard testing mechanisms can let schema mismatches slide if test fixtures fall out of sync with real specifications.
 
-This project keeps the Specmatic setup outside the FastAPI application code. The backend contract lives in `backend/contracts/openapi.yaml`, shared schemas live in `backend/schema/schemas.json`, and concrete examples live in `backend/contracts/openapi_examples/`.
+By adding Specmatic to this fork branch, we introduce several improvements:
 
-## What This Adds
+* **Decoupled API Testing**: Tests are automatically inferred directly from the `specmatic_contract.yaml` specification without writing a single line of backend test code.
 
-- Contract tests for every FastAPI backend route without changing route handlers, models, or tests.
-- Resiliency checks through Specmatic generative tests, useful for discovering validation and schema edge cases early.
-- External Specmatic example files with complete `http-request` and `http-response` pairs, which keeps the OpenAPI contract readable and makes executable examples easy to review or download from a PR.
-- A single schema source in `backend/schema/schemas.json`, so response and request definitions do not drift across route-specific files.
-- A mock-server-ready contract. Because Specmatic can serve the backend contract as a mock API, frontend and backend development can happen in parallel without waiting on each other.
+* **Instant Drift Detection**: Any discrepancy between backend execution (data validation, ORM models) and the declared API specification is flagged immediately.
 
-## Files
+* **Negative & Boundary Validation**: Specmatic evaluates how the FastAPI application responds to malformed data, strict types, and missing fields.
 
-- `specmatic.yaml`: Specmatic project configuration.
-- `backend/contracts/openapi.yaml`: OpenAPI contract used by Specmatic.
-- `backend/schema/schemas.json`: Shared schema definitions referenced by the OpenAPI contract.
-- `backend/contracts/openapi_examples/*.json`: External Specmatic examples in request-response pair format.
-- `compose.override.yml`: Adds Specmatic contract and resiliency runner services only.
+* **Elimination of Flaky Mocking**: Upstream dependencies and internal responses are bounded firmly to actual specifications instead of manual mocks that risk becoming stale.
 
-## Running Contract Tests
+---
 
-Start the backend stack and run the contract tests from Docker Compose:
+## What are Contract and Schema Resiliency Tests
 
-```bash
-docker compose up specmatic-contract-runner
-```
+### Contract Tests
+**Contract tests** validate that the provider (the FastAPI application) honors the structural agreement defined in the OpenAPI specification. They ensure that every endpoint accepts the exact input fields, parameters, and headers defined, while responding with the precise data types and status codes expected by frontend consumers.
 
-Run resiliency tests after the contract runner:
+### Schema Resiliency Tests
+**Schema resiliency tests** (also called generative or robustness testing) automatically fuzz the input schema. The testing engine generates an array of edge-case payloads—including boundary values, reversed types, missing optional fields, and unexpected headers. This checks whether the server handles errors gracefully (e.g., returning standard HTTP `422 Unprocessable Entity` responses via Pydantic) rather than crashing or throwing internal `500` server errors.
 
-```bash
-docker compose up specmatic-resiliency-runner
-```
+---
 
-Reports are written under `build/reports/specmatic-contract-tests/` and `build/reports/specmatic-resiliency-tests/`.
+## Implementing Specmatic for Contract and Resiliency Tests
+The application profile is declared across three central configuration files in the root folder:
+* `specmatic.yaml`: Primary orchestration and contract pointer, generated as a Docker volume mount of `specmatic_contract.yaml` (for Contract Testing) and `specmatic_resiliency.yaml` (for Schema Resiliency Testing)
 
-## Authentication Token
+* `specmatic_contract.yaml`: The Specmatic V3 YAML configuration file for Contract Tests (Schema Resiliency Tests is set to None)
 
-Do not commit a bearer token. This template creates JWT access tokens using `ACCESS_TOKEN_EXPIRE_MINUTES`, which defaults to `60 * 24 * 8` minutes, or 8 days, in `backend/app/core/config.py`. A token copied into source control will eventually expire and is also a credential leak.
+* `specmatic_resiliency.yaml`:  The Specmatic V3 YAML configuration file for Schema Resiliency Tests (Schema Resiliency Tests is set to all)
 
-For local runs, generate a fresh token with the login endpoint and export it before running Specmatic:
+### Local Run
+You can execute automated contract tests locally using python scripts or dedicated docker-compose configurations. To run authentication or direct python test triggers:
 
-```bash
-export SPECMATIC_AUTH_TOKEN="Bearer <fresh-token>"
-docker compose up specmatic-contract-runner
-```
+```python specmatic-auth.py```
 
-On Windows PowerShell:
+```docker compose up --build --attach specmatic-contract-runner --attach backend --attach specmatic-resiliency-runner```
 
-```powershell
-$env:SPECMATIC_AUTH_TOKEN = "Bearer <fresh-token>"
-docker compose up specmatic-contract-runner
-```
+### Continuous Integration (CI)
+Specmatic execution is automated within the continuous integration platform via GitHub Actions. Upon opening a PR or pushing to monitored branches, a dedicated workflow builds the backend stack and hooks Specmatic directly into the runtime pipeline. This blocks faulty builds from reaching deployment.
 
-In CI, store the token or token generation step in the CI secret manager. For a production-quality PR, the preferred approach is to generate short-lived credentials during the workflow instead of checking in static secrets.
+---
 
-## Mock Server Workflow For Frontend Later
+## Results
+Upon running Specmatic, full execution metrics are summarized in the console and written to structured files. Test outcomes break down into the following:
+* **Contract Test Pass/Fail**: A checklist of implemented endpoints matching the contract specification.
+* **Resiliency Coverage**: Metrics evaluating the server's stability against generative fuzzed request data.
+* **HTML Reports**: An interactive execution overview generated in the output directory.
 
-Once the frontend is ready to consume the contract, run Specmatic in mock mode from the same OpenAPI file. The frontend can point its API base URL to the Specmatic mock server instead of the live backend.
+---
 
-A typical workflow is:
+## Final Docker Compose Command to See Tests Run
 
-1. Backend developers update `openapi.yaml`, `schemas.json`, and examples when API behavior changes.
-2. Frontend developers run the Specmatic mock server from the contract and build screens against predictable responses.
-3. Contract tests validate that the real FastAPI backend still satisfies the same contract.
-4. Resiliency tests explore edge cases beyond the curated examples.
+### LOCAL
+To run the full contract suite locally inside the Docker network environment, run:
 
-This separates API agreement from implementation timing, so frontend work can continue while backend endpoints are still being implemented.
+```docker compose up --build --attach specmatic-contract-runner --attach backend --attach specmatic-resiliency-runner```
 
-## PR Notes
+### CI
+The CI execution automatically handles network layers on GitHub Actions runners. The tests execute successfully using the configuration template below:
 
-The compose override intentionally avoids application-code changes. The only Compose additions are the Specmatic runner services, and authentication is read from `SPECMATIC_AUTH_TOKEN` rather than a committed JWT.
+```docker compose -f compose.yml -f compose.override.yml up -d db backend```
+
+```docker compose exec -T backend bash -c "while ! curl -s http://localhost:8000/health-check/; do sleep 1; done"```
+
+```docker compose exec -T backend python ./specmatic-auth.py```
+
+---
+
+## Note to the Project Owner
+> We would like to express our gratitude to the authors and maintainers of the original `fastapi/full-stack-fastapi-template` repo. This boilerplate is an exceptional, production-grade learning resource for developers looking to experiment with modern full-stack architectures. Integrating Specmatic into this environment illustrates how contract-driven pipelines secure the boundaries of production microservices. We hope you find this addition helpful, and we would deeply appreciate your review and acceptance of our contribution!

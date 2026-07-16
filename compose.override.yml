@@ -132,45 +132,21 @@ services:
       - 9323:9323
 
   # Specmatic contract test runner for the backend OpenAPI contract.
-  specmatic-contract-runner:
+  specmatic-runner:
     image: specmatic/specmatic:2.50.0
     volumes:
       - .:/usr/src/app
-      - ./specmatic_contract.yaml:/usr/src/app/specmatic.yaml:ro
     working_dir: /usr/src/app
     command: >
       test
       --config=specmatic.yaml
       --testBaseURL=http://backend:8000
-      --filter="!(PATH='/api/v1/password-recovery/{email}' && STATUS >= '400') && !(PATH='/api/v1/utils/health-check/' && STATUS = '400') && !(PATH = '/api/v1/private/users/' && (STATUS = '200' || STATUS = '400'))"
     environment:
-      - OAuth2PasswordBearer=${SPECMATIC_AUTH_TOKEN}
+      - OAuth2PasswordBearer=${OAUTH2_BEARER_TOKEN}
     depends_on:
       backend:
         condition: service_healthy
-
-  # Specmatic generative resiliency runner for contract edge cases.
-  specmatic-resiliency-runner:
-    image: specmatic/specmatic:2.50.0
-    volumes:
-      - .:/usr/src/app
-      - ./specmatic_resiliency.yaml:/usr/src/app/specmatic.yaml:ro
-    working_dir: /usr/src/app
-    command: >
-      test
-      --config=specmatic.yaml
-      --testBaseURL=http://backend:8000
-      --filter="!(PATH='/api/v1/password-recovery/{email}' && STATUS >= '400') && !(PATH='/api/v1/utils/health-check/' && STATUS = '400') && !(PATH = '/api/v1/private/users/' && (STATUS = '200' || STATUS = '400'))"
-    environment:
-      - OAuth2PasswordBearer=${SPECMATIC_AUTH_TOKEN}
-    depends_on:
-      backend:
-        condition: service_healthy
-      specmatic-contract-runner:
-        condition: service_completed_successfully
 
 networks:
   traefik-public:
     external: false
-  specmatic-tests:
-    driver: bridge

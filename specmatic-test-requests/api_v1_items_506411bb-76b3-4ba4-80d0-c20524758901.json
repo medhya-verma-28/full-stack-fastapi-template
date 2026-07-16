@@ -1,0 +1,11 @@
+{
+  "http-request": {
+    "path": "/api/v1/items/506411bb-76b3-4ba4-80d0-c20524758901",
+    "method": "DELETE",
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}"
+    }
+  }
+}

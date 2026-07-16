@@ -1,0 +1,15 @@
+{
+  "http-request": {
+    "path": "/api/v1/items/",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}"
+    },
+    "body": {
+      "title": "Test Item 798",
+      "description": "Sample description for testing"
+    }
+  }
+}

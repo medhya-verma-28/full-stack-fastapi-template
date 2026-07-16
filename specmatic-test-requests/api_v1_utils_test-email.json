@@ -1,0 +1,13 @@
+{
+  "http-request": {
+    "path": "/api/v1/utils/test-email/",
+    "method": "POST",
+    "headers": {
+      "Accept": "application/json",
+      "Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}"
+    },
+    "query": {
+      "email_to": "private.seed@example.com"
+    }
+  }
+}

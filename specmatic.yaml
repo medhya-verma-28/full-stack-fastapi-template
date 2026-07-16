@@ -1,0 +1,67 @@
+version: 3
+
+systemUnderTest:
+  service:
+    $ref: "#/components/services/fastapi-backend-service"
+    runOptions:
+      $ref: "#/components/runOptions/localFastApiExecution"
+    stub:
+      environments:
+        local:
+          variables:
+            OAUTH2_BEARER_TOKEN: ""
+          interactions:
+            - request:
+                method: POST
+                path: /api/v1/login/access-token
+                headers:
+                  Content-Type: "application/x-www-form-urlencoded"
+                  Accept: "application/x-www-form-urlencoded"
+                form-data:
+                  username: "testuser@example.com"
+                  password: "SecretPassword123"
+              response:
+                status: 200
+                extract:
+                  body.access_token: OAUTH2_BEARER_TOKEN
+
+components:
+  sources:
+    localFilesystemRepo:
+      filesystem:
+        directory: "."
+
+  services:
+    fastapi-backend-service:
+      description: "FastAPI backend service validated from the OpenAPI contract."
+      definitions:
+        - definition:
+            source:
+              $ref: "#/components/sources/localFilesystemRepo"
+            specs:
+              - spec:
+                  id: FastApiSpec
+                  path: "contracts/openapi.yaml"
+
+  runOptions:
+    localFastApiExecution:
+      openapi:
+        type: "test"
+        specs:
+          - spec:
+              id: FastApiSpec
+              baseUrl: "http://backend:8000"
+        actuatorUrl: "http://backend:8000/api/v1/actuator/mappings"
+
+specmatic:
+  settings:
+    test:
+      schemaResiliencyTests: all
+    mock:
+      generative: true
+
+  governance:
+    report:
+      formats:
+        - html
+      outputDirectory: "build/reports/specmatic-tests"

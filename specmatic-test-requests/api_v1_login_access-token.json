@@ -1,0 +1,14 @@
+{
+  "http-request": {
+    "path": "/api/v1/login/access-token",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Accept": "application/x-www-form-urlencoded"
+    },
+    "form-fields": {
+      "username": "admin@example.com",
+      "password": "changethis"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "http-request": {
+    "path": "/api/v1/private/users/",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}"
+    },
+    "body": {
+      "email": "alienated1234455@example.com",
+      "password": "Password@8557",
+      "full_name": "John Doe"
+    }
+  }
+}

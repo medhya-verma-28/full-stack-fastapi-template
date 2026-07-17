@@ -1,7 +1,7 @@
 {
   "http-request": {
-    "path": "/api/v1/password-recovery/user8515@example.com",
-    "method": "POST",
+    "path": "/api/v1/users/f19bfe5f-4931-46d2-b361-d65878973e59",
+    "method": "DELETE",
     "headers": {
       "Content-Type": "application/json",
       "Accept": "application/json",

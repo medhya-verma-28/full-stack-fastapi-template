@@ -1,0 +1,21 @@
+{
+    "http-request": {
+        "path": "/api/v1/users/me",
+        "method": "DELETE",
+        "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        "body": ""
+    },
+    "http-response": {
+        "status": 403,
+        "body": {
+            "detail": "Super users are not allowed to delete themselves"
+        },
+        "status-text": "Forbidden",
+        "headers": {
+            "content-type": "application/json"
+        }
+    }
+}

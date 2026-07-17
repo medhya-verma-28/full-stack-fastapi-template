@@ -8,9 +8,9 @@
       "Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}"
     },
     "body": {
-      "email": "alienated1234455@example.com",
-      "password": "Password@8557",
-      "full_name": "John Doe"
+      "email": "unique.user.999@example.com",
+      "password": "Password@4478",
+      "full_name": "Robert Johnson"
     }
   }
 }

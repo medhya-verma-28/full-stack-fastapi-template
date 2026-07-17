@@ -1,0 +1,28 @@
+{
+    "http-request": {
+        "path": "/api/v1/items",
+        "method": "POST",
+        "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "title": "Test Item 568",
+            "description": "Sample description for testing"
+        }
+    },
+    "http-response": {
+        "status": 200,
+        "body": {
+            "title": "Test Item 568",
+            "description": "Sample description for testing",
+            "id": "95993498-4367-477c-9dae-8caf31387748",
+            "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+            "created_at": "2026-07-17T15:48:30.268854Z"
+        },
+        "status-text": "OK",
+        "headers": {
+            "content-type": "application/json"
+        }
+    }
+}

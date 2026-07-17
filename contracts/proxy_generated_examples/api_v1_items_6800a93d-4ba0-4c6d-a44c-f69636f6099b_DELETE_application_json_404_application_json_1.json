@@ -1,0 +1,21 @@
+{
+    "http-request": {
+        "path": "/api/v1/items/6800a93d-4ba0-4c6d-a44c-f69636f6099b",
+        "method": "DELETE",
+        "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        "body": ""
+    },
+    "http-response": {
+        "status": 404,
+        "body": {
+            "detail": "Item not found"
+        },
+        "status-text": "Not Found",
+        "headers": {
+            "content-type": "application/json"
+        }
+    }
+}

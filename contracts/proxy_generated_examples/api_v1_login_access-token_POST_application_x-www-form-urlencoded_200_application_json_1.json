@@ -1,0 +1,25 @@
+{
+    "http-request": {
+        "path": "/api/v1/login/access-token",
+        "method": "POST",
+        "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "form-fields": {
+            "username": "admin@example.com",
+            "password": "changethis"
+        }
+    },
+    "http-response": {
+        "status": 200,
+        "body": {
+            "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3ODQ5OTQ1MTAsInN1YiI6ImNmYWFmZDZkLWVlNzQtNDQzYi04ZmFlLWQyNTA0YWNhOThkMSJ9.bmojv-OiESA7FycoqJDu9zI9ZYErgVdlESRYptK5alg",
+            "token_type": "bearer"
+        },
+        "status-text": "OK",
+        "headers": {
+            "content-type": "application/json"
+        }
+    }
+}

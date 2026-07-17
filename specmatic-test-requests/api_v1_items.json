@@ -8,7 +8,7 @@
       "Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}"
     },
     "body": {
-      "title": "Test Item 798",
+      "title": "Test Item 568",
       "description": "Sample description for testing"
     }
   }

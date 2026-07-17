@@ -4,11 +4,8 @@
     "method": "POST",
     "headers": {
       "Content-Type": "application/x-www-form-urlencoded",
-      "Accept": "application/x-www-form-urlencoded"
+      "Accept": "application/json"
     },
-    "form-fields": {
-      "username": "admin@example.com",
-      "password": "changethis"
-    }
+    "body": "username=admin%40example.com&password=changethis"
   }
 }

@@ -22,28 +22,6 @@ Write-Host " Found $($ExampleFiles.Count) pre-generated example files.          
 Write-Host " Streaming traces directly through proxy at: $ProxyUrl " -ForegroundColor Green
 Write-Host "==========================================================" -ForegroundColor Green
 
-try {
-    $LoginResponse = Invoke-RestMethod `
-        -Uri "$ProxyUrl/api/v1/login/access-token" `
-        -Method POST `
-        -ContentType "application/x-www-form-urlencoded" `
-        -Body @{
-            username = "admin@example.com"
-            password = "changethis"
-        }
-
-    if (-not $LoginResponse.access_token) {
-        throw "Login succeeded but no access_token was returned."
-    }
-
-    $env:OAUTH2_BEARER_TOKEN = $LoginResponse.access_token
-    Write-Host "Successfully obtained access token." -ForegroundColor Green
-}
-catch {
-    Write-Host "Unable to obtain access token." -ForegroundColor Red
-    Write-Host $_.Exception.Message -ForegroundColor Yellow
-    exit 1
-}
 # 2. Iterate and feed raw payloads dynamically through the proxy container 
 $Counter = 1
 foreach ($File in $ExampleFiles) {

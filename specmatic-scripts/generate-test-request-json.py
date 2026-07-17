@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from app.api.main import api_router
 from typing import Annotated, get_origin, get_args
-from fastapi.params import Depends, Security
+from fastapi.params import Depends, Security, Query
 import importlib.util
 from fastapi.security import OAuth2PasswordRequestForm
 import os
@@ -68,26 +68,30 @@ mock_generators = {
             str(uuid.uuid4())
         ]),
 
-        "password":(
+        "password":
             f"Password@{random.randint(1000,9999)}"
-        ),
+        ,
 
-        "current_password":(
+        "current_password":
             f"OldPassword@{random.randint(1000,9999)}"
-        ),
+        ,
 
-        "new_password":(
+        "new_password":
             f"NewPassword@{random.randint(1000,9999)}"
-        ),
+        ,
 
-        "hashed_password":(
+        "hashed_password":
             f"$2b$12${uuid.uuid4().hex}"
-        ),
+        ,
 
         # User fields
+        "user_id": str(uuid.uuid4()),
+
         "email":random.choice([
             f"user{random.randint(1,10000)}@example.com",
             random.choice(SEEDED_EMAILS)]),
+
+        "private_email": f"user{random.randint(1,10000)}@example.com",
 
         "full_name":random.choice([
             "John Doe",
@@ -114,10 +118,10 @@ mock_generators = {
 
 
         # Date fields
-        "created_at":(
+        "created_at":
             datetime.now(timezone.utc)
             .isoformat()
-        ),
+        ,
 
         # Integer fields
         "count":random.randint(1, 20),
@@ -145,8 +149,16 @@ mock_generators = {
     },
 
     # Generic request body (ResetPassword, etc.)
-    "body": {
-        "token": "Bearer {{OAUTH2_BEARER_TOKEN}}",
+    "reset_password_body": {
+        "token":str(uuid.uuid4()),
+        "new_password": f"NewPassword@{random.randint(1000,9999)}"
+    },
+
+    "users_me_password_body": {
+        "token":str(uuid.uuid4()),
+        "current_password":
+            f"OldPassword@{random.randint(1000,9999)}"
+        ,
         "new_password": f"NewPassword@{random.randint(1000,9999)}"
     },
 
@@ -273,13 +285,6 @@ if BACKEND_DIR.exists():
                         if is_injectable(param)
                     ]
                     
-                    is_form_data = False
-                    for name, param in endpoint_signature.parameters.items():
-                        # Unpack inner classes inside Annotated[Type, Dependency] structures
-                        inner_types = get_args(param.annotation)
-                        if param.annotation == OAuth2PasswordRequestForm or OAuth2PasswordRequestForm in inner_types:
-                            is_form_data = True
-                            
                     route_path = route.path
 
                     path_match = re.search(r"{([^{}]+)}", route.path)
@@ -295,12 +300,27 @@ if BACKEND_DIR.exists():
                     # route.path already includes the router prefix
                     api_path = f"/api/v1{route_path}"
 
-                    param_values = dict()
+                    if api_path.endswith("/reset-password"):
+                        api_path += "/"
+
+
+                    is_form_data = False
+                    is_query = False
+                    for name, param in endpoint_signature.parameters.items(): 
+                        # Unpack inner classes inside Annotated[Type, Dependency] structures 
+                        inner_types = get_args(param.annotation) 
+                        
+                        if param.annotation == OAuth2PasswordRequestForm or OAuth2PasswordRequestForm in inner_types: 
+                            is_form_data = True 
+                            continue 
+
                     if is_form_data:
-                        # Provide standard OAuth2-compliant authentication key-value mock fields
-                        param_values["username"] = os.environ.get("FIRST_SUPERUSER")
-                        param_values["password"] = os.environ.get("FIRST_SUPERUSER_PASSWORD")
+                        param_values = "username=admin%40example.com&password=changethis"
+                    elif "test-email" in api_path:
+                        api_path += "?email_to=admin%40example.com"
+
                     else:
+                        param_values = dict()
                         for name, param in endpoint_signature.parameters.items():
 
                             if is_injectable(param):
@@ -314,27 +334,41 @@ if BACKEND_DIR.exists():
                                     mock_data = generate_mock_data(name)
                                     for k in mock_data:
                                         param_values[k] = mock_data[k]
+                                elif "reset-password" in api_path:
+                                    param_values["body"] = generate_mock_data("reset_password_body")
+                                elif "users/me/password" in api_path:
+                                    param_values["body"] = generate_mock_data("users_me_password_body")
+                                elif "private" in api_path:
+                                    param_values["body"] = generate_mock_data("private_email")
                                 else:
                                     param_values[name] = generate_mock_data(name)
                     
                     headers = dict()
                     safe_filename = api_path.strip("/").replace("/", "_").replace("{", "").replace("}", "")
                     output_file = f"{OUTPUT_DIR}/{safe_filename}.json"
+                    output_file_name = f"{safe_filename}.json"
 
                     if is_form_data:
                         headers["Content-Type"] =  "application/x-www-form-urlencoded"
-                        headers["Accept"] =  "application/x-www-form-urlencoded"
-                        http_request_container = {"path": api_path, "method": method, "headers": headers, "form_data":param_values}
-                    elif "email_to" in param_values:
+                        headers["Accept"] =  "application/json"
+                        http_request_container = {"path": api_path, "method": method, "headers": headers, "body":param_values}
+                        output_file = f"{OUTPUT_DIR}/00_{safe_filename}.json"
+                        output_file_name = f"00_{safe_filename}.json"
+                    elif "test-email" in api_path:
                         headers["Accept"] =  "application/json"
                         headers["Authorization"] =  "Bearer {{OAUTH2_BEARER_TOKEN}}"
-                        http_request_container = {"path": api_path, "method": method, "headers": headers, "query": param_values}
+                        http_request_container = {"path": api_path, "method": method, "headers": headers}
+                        safe_filename = api_path.split("?")[0].strip("/").replace("/", "_").replace("{", "").replace("}", "")
+                        output_file = f"{OUTPUT_DIR}/{safe_filename}.json"
+                        output_file_name = f"{safe_filename}.json"
                     else:
                         headers["Content-Type"] =  "application/json"
                         headers["Accept"] =  "application/json"
                         headers["Authorization"] =  "Bearer {{OAUTH2_BEARER_TOKEN}}"
-                        if method not in ["GET", "DELETE"] and ("test-token" not in api_path) and (("password-recovery" not in api_path)) :
+                        if method not in ["GET", "DELETE"] and ("test-token" not in api_path) and ("password-recovery" not in api_path):
                             http_request_container = {"path": api_path, "method": method, "headers": headers, "body": param_values}
+                        elif ("reset-password" in api_path):
+                             http_request_container = {"path": api_path, "method": method, "headers": headers, "body": param_values}
                         else:
                             http_request_container = {"path": api_path, "method": method, "headers": headers}
                     stub_structure = {
@@ -343,4 +377,4 @@ if BACKEND_DIR.exists():
 
                     with open(output_file, "w", encoding="utf-8") as fp:
                         json.dump(stub_structure, fp, indent=2)
-                    print(f"\033[92mSuccess: Context-Aware request {safe_filename}.json generated inside: specmatic-test-requests\033[0m")
+                    print(f"\033[92mSuccess: Context-Aware request {output_file_name} generated inside: specmatic-test-requests\033[0m")

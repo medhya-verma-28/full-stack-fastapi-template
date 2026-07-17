@@ -1,0 +1,21 @@
+{
+    "http-request": {
+        "path": "/api/v1/users/f19bfe5f-4931-46d2-b361-d65878973e59",
+        "method": "DELETE",
+        "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        "body": ""
+    },
+    "http-response": {
+        "status": 404,
+        "body": {
+            "detail": "User not found"
+        },
+        "status-text": "Not Found",
+        "headers": {
+            "content-type": "application/json"
+        }
+    }
+}

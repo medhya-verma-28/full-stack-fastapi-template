@@ -1,0 +1,225 @@
+{
+    "http-request": {
+        "path": "/api/v1/users",
+        "method": "GET",
+        "headers": {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Connection": "close"
+        },
+        "body": ""
+    },
+    "http-response": {
+        "status": 200,
+        "body": {
+            "data": [
+                {
+                    "email": "admin@example.com",
+                    "is_active": true,
+                    "is_superuser": true,
+                    "full_name": null,
+                    "id": "a3a6585e-6095-42d3-bd9d-38d250c4a5e1",
+                    "created_at": "2026-07-18T18:24:21.479861Z"
+                },
+                {
+                    "email": "user3036@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "John Doe",
+                    "id": "5e15b216-c7d0-43ba-a723-ebb9807d0191",
+                    "created_at": "2026-07-18T18:09:29.837422Z"
+                },
+                {
+                    "email": "user8564@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "John Doe",
+                    "id": "439be026-7e48-48b6-ba7c-09ac03119c65",
+                    "created_at": "2026-07-17T15:31:48.942884Z"
+                },
+                {
+                    "email": "private.sevdfgdfgfdged@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "Robert Johnson",
+                    "id": "fa0da388-4a7c-40d3-abdd-1f54e27db379",
+                    "created_at": "2026-07-17T14:58:25.665128Z"
+                },
+                {
+                    "email": "user2411@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "Alice Smith",
+                    "id": "7376d3b0-e104-4c9b-982d-52c4b0835f10",
+                    "created_at": "2026-07-17T06:41:56.024916Z"
+                },
+                {
+                    "email": "user5600@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "John Doe",
+                    "id": "b4f75bb7-0cc5-457a-a040-7d707ffb21a8",
+                    "created_at": "2026-07-17T04:45:11.535002Z"
+                },
+                {
+                    "email": "user1849@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "John Doe",
+                    "id": "a59d22bf-268c-49f9-886c-d75420fcc983",
+                    "created_at": "2026-07-17T04:36:25.071771Z"
+                },
+                {
+                    "email": "private.seed@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "John Doe",
+                    "id": "cb975da1-673a-4f7c-99e1-edc238c574b6",
+                    "created_at": "2026-07-17T04:14:36.115651Z"
+                },
+                {
+                    "email": "user1963@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "Robert Johnson",
+                    "id": "8e593204-7541-46b3-af76-015453e83b39",
+                    "created_at": "2026-07-16T16:32:06.046559Z"
+                },
+                {
+                    "email": "user6920@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "John Doe",
+                    "id": "10835458-571d-4000-a2fa-a4b8aebb0678",
+                    "created_at": "2026-07-16T16:27:05.210633Z"
+                },
+                {
+                    "email": "alienated1234455@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "John Doe",
+                    "id": "26b9db2d-eef1-48a8-bb4f-18e786729685",
+                    "created_at": "2026-07-16T15:58:04.384125Z"
+                },
+                {
+                    "email": "unique.user.999@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "Robert Johnson",
+                    "id": "38af17f0-3786-4358-bb89-2704553a83d5",
+                    "created_at": "2026-07-16T15:13:49.585086Z"
+                },
+                {
+                    "email": "user8216@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "John Doe",
+                    "id": "d7af96e9-4f11-4400-b9f6-473eaf021bbd",
+                    "created_at": "2026-07-16T14:59:06.753407Z"
+                },
+                {
+                    "email": "user2132@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "Robert Johnson",
+                    "id": "8c167304-b3c5-4265-b44f-d9d15f738d0f",
+                    "created_at": "2026-07-16T14:26:40.637834Z"
+                },
+                {
+                    "email": "user808@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "Robert Johnson",
+                    "id": "8bfe5555-58ca-409c-93f2-632534106da7",
+                    "created_at": "2026-07-16T13:29:15.697620Z"
+                },
+                {
+                    "email": "user7990@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "John Doe",
+                    "id": "bf49953d-d12f-46ee-9ae4-f7c80fa55c21",
+                    "created_at": "2026-07-15T17:15:31.940431Z"
+                },
+                {
+                    "email": "user7899@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "John Doe",
+                    "id": "cd67ef72-d716-4680-ad06-9001c6e98799",
+                    "created_at": "2026-07-15T17:15:31.859966Z"
+                },
+                {
+                    "email": "user9061@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "Robert Johnson",
+                    "id": "fbabf3ed-b8c6-47fe-88af-c8760c4d8d58",
+                    "created_at": "2026-07-15T17:15:31.778438Z"
+                },
+                {
+                    "email": "user4976@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "Alice Smith",
+                    "id": "24ba2691-731d-4cce-a2a8-6057971c9a27",
+                    "created_at": "2026-07-15T17:15:31.697530Z"
+                },
+                {
+                    "email": "signup.user@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "Robert Johnson",
+                    "id": "60db2ff7-1ec0-41f3-8e02-bcd10ed1254c",
+                    "created_at": "2026-07-15T17:15:31.611025Z"
+                },
+                {
+                    "email": "user4688@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "Alice Smith",
+                    "id": "3f8410ce-3891-4bb4-af52-6b325a803e0d",
+                    "created_at": "2026-07-15T16:55:32.894492Z"
+                },
+                {
+                    "email": "user8050@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "Alice Smith",
+                    "id": "a54cf16c-b1df-4692-8f9d-41b0b116aecb",
+                    "created_at": "2026-07-15T16:55:32.774786Z"
+                },
+                {
+                    "email": "user9124@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "John Doe",
+                    "id": "1b04819e-8f1f-4da6-94a5-adb22bd12019",
+                    "created_at": "2026-07-15T16:55:32.620841Z"
+                },
+                {
+                    "email": "medhya999@example.com",
+                    "is_active": true,
+                    "is_superuser": false,
+                    "full_name": "Robert Johnson",
+                    "id": "bf6a8726-19ce-47d0-b792-40d14b7f8f49",
+                    "created_at": "2026-07-15T16:55:32.504190Z"
+                },
+                {
+                    "email": "user846@example.com",
+                    "is_active": true,
+                    "is_superuser": true,
+                    "full_name": "Alice Smith",
+                    "id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-11T15:26:47.273843Z"
+                }
+            ],
+            "count": 25
+        },
+        "status-text": "OK",
+        "headers": {
+            "content-type": "application/json",
+            "connection": "close"
+        }
+    }
+}

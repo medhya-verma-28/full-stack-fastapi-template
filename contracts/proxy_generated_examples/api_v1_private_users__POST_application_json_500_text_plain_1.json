@@ -3,13 +3,15 @@
         "path": "/api/v1/private/users",
         "method": "POST",
         "headers": {
+            "Content-Type": "application/json",
             "Accept": "application/json",
-            "Content-Type": "application/json"
+            "Connection": "close"
         },
         "body": {
-            "email": "unique.user.999@example.com",
-            "password": "Password@4478",
-            "full_name": "Robert Johnson"
+            "body": "user4664@example.com",
+            "email": "admin@example.com",
+            "password": "Password@5336",
+            "full_name": "Alice Smith"
         }
     },
     "http-response": {
@@ -17,7 +19,8 @@
         "body": "Internal Server Error",
         "status-text": "Internal Server Error",
         "headers": {
-            "content-type": "text/plain; charset=utf-8"
+            "content-type": "text/plain; charset=utf-8",
+            "connection": "close"
         }
     }
 }

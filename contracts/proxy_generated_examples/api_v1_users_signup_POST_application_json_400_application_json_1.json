@@ -3,13 +3,14 @@
         "path": "/api/v1/users/signup",
         "method": "POST",
         "headers": {
+            "Content-Type": "application/json",
             "Accept": "application/json",
-            "Content-Type": "application/json"
+            "Connection": "close"
         },
         "body": {
-            "email": "unique.user.999@example.com",
-            "password": "Password@4478",
-            "full_name": "Robert Johnson"
+            "email": "admin@example.com",
+            "password": "Password@5336",
+            "full_name": "Alice Smith"
         }
     },
     "http-response": {
@@ -19,7 +20,8 @@
         },
         "status-text": "Bad Request",
         "headers": {
-            "content-type": "application/json"
+            "content-type": "application/json",
+            "connection": "close"
         }
     }
 }

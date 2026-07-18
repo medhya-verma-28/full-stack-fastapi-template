@@ -3,15 +3,19 @@
         "path": "/api/v1/utils/health-check",
         "method": "GET",
         "headers": {
-            "Accept": "application/json"
-        }
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Connection": "close"
+        },
+        "body": ""
     },
     "http-response": {
         "status": 200,
         "body": true,
         "status-text": "OK",
         "headers": {
-            "content-type": "application/json"
+            "content-type": "application/json",
+            "connection": "close"
         }
     }
 }

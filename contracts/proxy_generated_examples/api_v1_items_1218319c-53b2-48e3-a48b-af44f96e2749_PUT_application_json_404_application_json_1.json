@@ -1,20 +1,23 @@
 {
     "http-request": {
-        "path": "/api/v1/users/me",
-        "method": "DELETE",
+        "path": "/api/v1/items/1218319c-53b2-48e3-a48b-af44f96e2749",
+        "method": "PUT",
         "headers": {
             "Content-Type": "application/json",
             "Accept": "application/json",
             "Connection": "close"
         },
-        "body": ""
+        "body": {
+            "title": "Test Item 135",
+            "description": "Sample description for testing"
+        }
     },
     "http-response": {
-        "status": 403,
+        "status": 404,
         "body": {
-            "detail": "Super users are not allowed to delete themselves"
+            "detail": "Item not found"
         },
-        "status-text": "Forbidden",
+        "status-text": "Not Found",
         "headers": {
             "content-type": "application/json",
             "connection": "close"

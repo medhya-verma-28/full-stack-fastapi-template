@@ -1,0 +1,15 @@
+{
+  "http-request": {
+    "path": "/api/v1/users/signup",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    "body": {
+      "email": "admin@example.com",
+      "password": "Password@5336",
+      "full_name": "Alice Smith"
+    }
+  }
+}

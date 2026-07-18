@@ -1,7 +1,7 @@
 {
     "http-request": {
-        "path": "/api/v1/users/me",
-        "method": "DELETE",
+        "path": "/api/v1/users/9dba2d8b-80c6-4d3e-b834-a6ca00272606",
+        "method": "GET",
         "headers": {
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -10,11 +10,11 @@
         "body": ""
     },
     "http-response": {
-        "status": 403,
+        "status": 404,
         "body": {
-            "detail": "Super users are not allowed to delete themselves"
+            "detail": "User not found"
         },
-        "status-text": "Forbidden",
+        "status-text": "Not Found",
         "headers": {
             "content-type": "application/json",
             "connection": "close"

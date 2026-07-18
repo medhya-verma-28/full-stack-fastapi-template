@@ -1,21 +1,23 @@
 {
     "http-request": {
-        "path": "/api/v1/items/6800a93d-4ba0-4c6d-a44c-f69636f6099b",
+        "path": "/api/v1/users/9dba2d8b-80c6-4d3e-b834-a6ca00272606",
         "method": "DELETE",
         "headers": {
+            "Content-Type": "application/json",
             "Accept": "application/json",
-            "Content-Type": "application/json"
+            "Connection": "close"
         },
         "body": ""
     },
     "http-response": {
         "status": 404,
         "body": {
-            "detail": "Item not found"
+            "detail": "User not found"
         },
         "status-text": "Not Found",
         "headers": {
-            "content-type": "application/json"
+            "content-type": "application/json",
+            "connection": "close"
         }
     }
 }

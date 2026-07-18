@@ -1,11 +1,15 @@
 {
   "http-request": {
-    "path": "/api/v1/password-recovery-html-content/user3847@example.com",
+    "path": "/api/v1/items/",
     "method": "POST",
     "headers": {
       "Content-Type": "application/json",
       "Accept": "application/json",
       "Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}"
+    },
+    "body": {
+      "title": "Test Item 925",
+      "description": "Mock item description"
     }
   }
 }

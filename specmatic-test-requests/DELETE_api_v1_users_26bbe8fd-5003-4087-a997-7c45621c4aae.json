@@ -1,0 +1,11 @@
+{
+  "http-request": {
+    "path": "/api/v1/users/26bbe8fd-5003-4087-a997-7c45621c4aae",
+    "method": "DELETE",
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}"
+    }
+  }
+}

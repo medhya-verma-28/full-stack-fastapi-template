@@ -4,6 +4,7 @@
         "method": "POST",
         "headers": {
             "Accept": "application/json",
+            "Connection": "keep-alive",
             "Content-Type": "application/x-www-form-urlencoded"
         },
         "form-fields": {
@@ -14,7 +15,7 @@
     "http-response": {
         "status": 200,
         "body": {
-            "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3ODQ5OTQ1MTAsInN1YiI6ImNmYWFmZDZkLWVlNzQtNDQzYi04ZmFlLWQyNTA0YWNhOThkMSJ9.bmojv-OiESA7FycoqJDu9zI9ZYErgVdlESRYptK5alg",
+            "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3ODUwOTQyNjUsInN1YiI6ImEzYTY1ODVlLTYwOTUtNDJkMy1iZDlkLTM4ZDI1MGM0YTVlMSJ9.7v3E6JFBP66QZ1faR15ldhstqw_2g_mWuMLFSsfGEtA",
             "token_type": "bearer"
         },
         "status-text": "OK",

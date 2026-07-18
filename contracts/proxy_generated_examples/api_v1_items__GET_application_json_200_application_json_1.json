@@ -1,0 +1,214 @@
+{
+    "http-request": {
+        "path": "/api/v1/items",
+        "method": "GET",
+        "headers": {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Connection": "close"
+        },
+        "body": ""
+    },
+    "http-response": {
+        "status": 200,
+        "body": {
+            "data": [
+                {
+                    "title": "Test Item 31",
+                    "description": "Sample description for testing",
+                    "id": "0a5f2a7b-3232-4a5a-8e3a-a6adbf7510c7",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-18T17:52:32.103109Z"
+                },
+                {
+                    "title": "Test Item 998",
+                    "description": "Sample description for testing",
+                    "id": "79772939-eb74-4208-af9c-1eea3fbdfb81",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-18T17:32:37.031168Z"
+                },
+                {
+                    "title": "Test Item 107",
+                    "description": "Mock item description",
+                    "id": "e6c83900-8ff4-48cb-a0a3-77ae28defee2",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-18T16:10:18.100531Z"
+                },
+                {
+                    "title": "Test Item 568",
+                    "description": "Sample description for testing",
+                    "id": "95993498-4367-477c-9dae-8caf31387748",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-17T15:48:30.268854Z"
+                },
+                {
+                    "title": "Test Item 853",
+                    "description": "Sample description for testing",
+                    "id": "af94974d-6c3c-43b5-b294-4b183f596744",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-17T15:31:41.474452Z"
+                },
+                {
+                    "title": "Test Item 124",
+                    "description": "Mock item description",
+                    "id": "c543e52b-5591-428d-948d-ac0b09d0f1d6",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-17T15:07:47.216783Z"
+                },
+                {
+                    "title": "Test Item 807",
+                    "description": "Mock item description",
+                    "id": "838d839c-5f87-4f95-93a2-67e516a78b9b",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-17T14:58:25.483031Z"
+                },
+                {
+                    "title": "Test Item 807",
+                    "description": "Mock item description",
+                    "id": "499b5008-4819-4536-8279-bac82b931a7e",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-17T14:43:21.202439Z"
+                },
+                {
+                    "title": "Test Item 807",
+                    "description": "Mock item description",
+                    "id": "3d1ef030-fd5c-4f08-961d-31ad9208767a",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-17T14:36:37.962301Z"
+                },
+                {
+                    "title": "Test Item 807",
+                    "description": "Mock item description",
+                    "id": "ea84e931-c5c8-4133-ab0e-d7c9923ee8f8",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-17T14:33:16.179387Z"
+                },
+                {
+                    "title": "Test Item 546",
+                    "description": "Sample description for testing",
+                    "id": "a032296a-bee2-4724-afee-272a998bd2cb",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-17T06:41:49.797308Z"
+                },
+                {
+                    "title": "Test Item 19",
+                    "description": "Sample description for testing",
+                    "id": "92a27e55-78cb-4e2f-b48a-d4f55c4f62b1",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-17T06:01:50.909859Z"
+                },
+                {
+                    "title": "Test Item 954",
+                    "description": "Sample description for testing",
+                    "id": "d5400b4e-5e5b-49df-95b4-86ae62109046",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-17T04:45:11.284630Z"
+                },
+                {
+                    "title": "Test Item 430",
+                    "description": "Sample description for testing",
+                    "id": "dc52b74b-e3c6-4395-b464-662232f253cb",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-17T04:36:24.746366Z"
+                },
+                {
+                    "title": "Test Item 815",
+                    "description": "Mock item description",
+                    "id": "4a116e6e-bd1d-4238-97de-fd1a7902dbdd",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-17T04:14:31.745683Z"
+                },
+                {
+                    "title": "Test Item 7",
+                    "description": "Sample description for testing",
+                    "id": "c22cf246-ed72-4596-af16-619a1ca8251f",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-17T04:10:18.442719Z"
+                },
+                {
+                    "title": "Test Item 82",
+                    "description": "Sample description for testing",
+                    "id": "84e90f08-fee5-4384-a6e8-38492d22c4c9",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-16T16:32:01.757896Z"
+                },
+                {
+                    "title": "Test Item 255",
+                    "description": "Mock item description",
+                    "id": "7c2c7fa8-9158-4208-83d4-193c82137395",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-16T16:26:58.986860Z"
+                },
+                {
+                    "title": "Test Item 798",
+                    "description": "Sample description for testing",
+                    "id": "c3d785e6-663f-4429-81f9-5cc460ffc9ff",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-16T15:58:04.150289Z"
+                },
+                {
+                    "title": "Test Item 648",
+                    "description": "Sample description for testing",
+                    "id": "3ecd13bc-fb8f-4d63-85ff-17591fef470f",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-16T15:53:11.252734Z"
+                },
+                {
+                    "title": "Test Item 240",
+                    "description": "Sample description for testing",
+                    "id": "84f4a1b3-869d-434b-856e-639c5dc81ba7",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-16T15:35:41.081085Z"
+                },
+                {
+                    "title": "Test Item 240",
+                    "description": "Sample description for testing",
+                    "id": "cc982cb0-6e28-4e82-b190-333a89f34f92",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-16T15:27:01.202602Z"
+                },
+                {
+                    "title": "Test Item 240",
+                    "description": "Sample description for testing",
+                    "id": "65429051-549e-432c-a419-65757b548734",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-16T15:13:49.357752Z"
+                },
+                {
+                    "title": "Test Item 543",
+                    "description": "Sample description for testing",
+                    "id": "f3d1795e-049d-43d9-a5bb-7d6926400634",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-16T15:02:04.901622Z"
+                },
+                {
+                    "title": "Test Item 543",
+                    "description": "Sample description for testing",
+                    "id": "c8c7e88f-10fd-4825-95e3-9edbe4181241",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-16T14:59:01.438696Z"
+                },
+                {
+                    "title": "Test Item 122",
+                    "description": "Sample description for testing",
+                    "id": "90d0f2f4-1b68-4cb8-a028-32ef726301f4",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-16T14:26:40.456552Z"
+                },
+                {
+                    "title": "Test Item 432",
+                    "description": "Sample description for testing",
+                    "id": "c8ba855d-7aed-4585-864c-416893349467",
+                    "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
+                    "created_at": "2026-07-16T13:29:15.459501Z"
+                }
+            ],
+            "count": 27
+        },
+        "status-text": "OK",
+        "headers": {
+            "content-type": "application/json",
+            "connection": "close"
+        }
+    }
+}

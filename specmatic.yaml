@@ -5,25 +5,6 @@ systemUnderTest:
     $ref: "#/components/services/fastapi-backend-service"
     runOptions:
       $ref: "#/components/runOptions/localFastApiExecution"
-    stub:
-      environments:
-        local:
-          variables:
-            OAUTH2_BEARER_TOKEN: ""
-          interactions:
-            - request:
-                method: POST
-                path: /api/v1/login/access-token
-                headers:
-                  Content-Type: "application/x-www-form-urlencoded"
-                  Accept: "application/x-www-form-urlencoded"
-                form-data:
-                  username: "testuser@example.com"
-                  password: "SecretPassword123"
-              response:
-                status: 200
-                extract:
-                  body.access_token: OAUTH2_BEARER_TOKEN
 
 components:
   sources:

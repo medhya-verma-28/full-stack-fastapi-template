@@ -1,16 +1,15 @@
 {
   "http-request": {
-    "path": "/api/v1/users/signup",
-    "method": "POST",
+    "path": "/api/v1/items/1218319c-53b2-48e3-a48b-af44f96e2749",
+    "method": "PUT",
     "headers": {
       "Content-Type": "application/json",
       "Accept": "application/json",
       "Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}"
     },
     "body": {
-      "email": "unique.user.999@example.com",
-      "password": "Password@4478",
-      "full_name": "Robert Johnson"
+      "title": "Test Item 135",
+      "description": "Sample description for testing"
     }
   }
 }

@@ -1,7 +1,7 @@
 {
     "http-request": {
-        "path": "/api/v1/users",
-        "method": "POST",
+        "path": "/api/v1/users/26bbe8fd-5003-4087-a997-7c45621c4aae",
+        "method": "PATCH",
         "headers": {
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -9,16 +9,18 @@
         },
         "body": {
             "email": "admin@example.com",
+            "full_name": "Alice Smith",
             "password": "Password@5336",
-            "full_name": "Alice Smith"
+            "is_active": false,
+            "is_superuser": true
         }
     },
     "http-response": {
-        "status": 400,
+        "status": 404,
         "body": {
-            "detail": "The user with this email already exists in the system."
+            "detail": "The user with this id does not exist in the system"
         },
-        "status-text": "Bad Request",
+        "status-text": "Not Found",
         "headers": {
             "content-type": "application/json",
             "connection": "close"

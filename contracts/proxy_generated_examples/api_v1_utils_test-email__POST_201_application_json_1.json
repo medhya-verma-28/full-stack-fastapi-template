@@ -7,9 +7,8 @@
         },
         "headers": {
             "Accept": "application/json",
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        "body": ""
+            "Connection": "close"
+        }
     },
     "http-response": {
         "status": 201,
@@ -18,7 +17,8 @@
         },
         "status-text": "Created",
         "headers": {
-            "content-type": "application/json"
+            "content-type": "application/json",
+            "connection": "close"
         }
     }
 }

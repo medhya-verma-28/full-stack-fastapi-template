@@ -1,7 +1,7 @@
 {
   "http-request": {
-    "path": "/api/v1/items/6800a93d-4ba0-4c6d-a44c-f69636f6099b",
-    "method": "DELETE",
+    "path": "/api/v1/users/me",
+    "method": "GET",
     "headers": {
       "Content-Type": "application/json",
       "Accept": "application/json",

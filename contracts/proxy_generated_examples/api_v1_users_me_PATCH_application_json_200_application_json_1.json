@@ -1,13 +1,19 @@
 {
     "http-request": {
-        "path": "/api/v1/login/test-token",
-        "method": "POST",
+        "path": "/api/v1/users/me",
+        "method": "PATCH",
         "headers": {
             "Content-Type": "application/json",
             "Accept": "application/json",
             "Connection": "close"
         },
-        "body": ""
+        "body": {
+            "email": "admin@example.com",
+            "full_name": "Alice Smith",
+            "password": "Password@5336",
+            "is_active": false,
+            "is_superuser": true
+        }
     },
     "http-response": {
         "status": 200,

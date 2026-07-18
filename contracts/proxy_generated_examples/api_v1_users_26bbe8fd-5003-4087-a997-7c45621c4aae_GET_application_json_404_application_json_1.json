@@ -1,10 +1,11 @@
 {
     "http-request": {
-        "path": "/api/v1/users/f19bfe5f-4931-46d2-b361-d65878973e59",
-        "method": "DELETE",
+        "path": "/api/v1/users/26bbe8fd-5003-4087-a997-7c45621c4aae",
+        "method": "GET",
         "headers": {
+            "Content-Type": "application/json",
             "Accept": "application/json",
-            "Content-Type": "application/json"
+            "Connection": "close"
         },
         "body": ""
     },
@@ -15,7 +16,8 @@
         },
         "status-text": "Not Found",
         "headers": {
-            "content-type": "application/json"
+            "content-type": "application/json",
+            "connection": "close"
         }
     }
 }

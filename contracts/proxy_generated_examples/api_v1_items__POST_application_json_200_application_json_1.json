@@ -3,26 +3,28 @@
         "path": "/api/v1/items",
         "method": "POST",
         "headers": {
+            "Content-Type": "application/json",
             "Accept": "application/json",
-            "Content-Type": "application/json"
+            "Connection": "close"
         },
         "body": {
-            "title": "Test Item 568",
-            "description": "Sample description for testing"
+            "title": "Test Item 925",
+            "description": "Mock item description"
         }
     },
     "http-response": {
         "status": 200,
         "body": {
-            "title": "Test Item 568",
-            "description": "Sample description for testing",
-            "id": "95993498-4367-477c-9dae-8caf31387748",
-            "owner_id": "cfaafd6d-ee74-443b-8fae-d2504aca98d1",
-            "created_at": "2026-07-17T15:48:30.268854Z"
+            "title": "Test Item 925",
+            "description": "Mock item description",
+            "id": "b06f8d25-dc9b-40b8-8f31-783eb484292c",
+            "owner_id": "a3a6585e-6095-42d3-bd9d-38d250c4a5e1",
+            "created_at": "2026-07-18T19:31:06.544736Z"
         },
         "status-text": "OK",
         "headers": {
-            "content-type": "application/json"
+            "content-type": "application/json",
+            "connection": "close"
         }
     }
 }

@@ -1,21 +1,24 @@
 {
     "http-request": {
-        "path": "/api/v1/items/1218319c-53b2-48e3-a48b-af44f96e2749",
-        "method": "PUT",
+        "path": "/api/v1/users/3dcc3432-0289-482a-bae2-46937a2ae78e",
+        "method": "PATCH",
         "headers": {
             "Content-Type": "application/json",
             "Accept": "application/json",
             "Connection": "close"
         },
         "body": {
-            "title": "Test Item 135",
-            "description": "Sample description for testing"
+            "email": "grqstrjmtrkzyjryanwzuwnygjquchxfnuqwhbgukqrkczpjezhetywlcdiidefc@mmfbqmwtccddwukdvfnwhoagbszcqyub.com",
+            "full_name": "Alice Smith",
+            "password": "changethis",
+            "is_active": true,
+            "is_superuser": false
         }
     },
     "http-response": {
         "status": 404,
         "body": {
-            "detail": "Item not found"
+            "detail": "The user with this id does not exist in the system"
         },
         "status-text": "Not Found",
         "headers": {

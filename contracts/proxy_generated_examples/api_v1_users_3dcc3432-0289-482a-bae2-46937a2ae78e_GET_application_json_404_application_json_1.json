@@ -1,22 +1,21 @@
 {
     "http-request": {
-        "path": "/api/v1/password-recovery-html-content/signup.user@example.com",
-        "method": "POST",
+        "path": "/api/v1/users/3dcc3432-0289-482a-bae2-46937a2ae78e",
+        "method": "GET",
         "headers": {
             "Content-Type": "application/json",
             "Accept": "application/json",
             "Connection": "close"
         },
-        "body": {}
+        "body": ""
     },
     "http-response": {
-        "status": 401,
+        "status": 404,
         "body": {
-            "detail": "Not authenticated"
+            "detail": "User not found"
         },
-        "status-text": "Unauthorized",
+        "status-text": "Not Found",
         "headers": {
-            "www-authenticate": "Bearer",
             "content-type": "application/json",
             "connection": "close"
         }

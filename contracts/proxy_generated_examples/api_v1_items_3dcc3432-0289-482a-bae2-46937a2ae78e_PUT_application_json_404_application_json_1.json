@@ -1,18 +1,21 @@
 {
     "http-request": {
-        "path": "/api/v1/users/26bbe8fd-5003-4087-a997-7c45621c4aae",
-        "method": "GET",
+        "path": "/api/v1/items/3dcc3432-0289-482a-bae2-46937a2ae78e",
+        "method": "PUT",
         "headers": {
             "Content-Type": "application/json",
             "Accept": "application/json",
             "Connection": "close"
         },
-        "body": ""
+        "body": {
+            "title": "Updated Item 909",
+            "description": "Updated description"
+        }
     },
     "http-response": {
         "status": 404,
         "body": {
-            "detail": "User not found"
+            "detail": "Item not found"
         },
         "status-text": "Not Found",
         "headers": {

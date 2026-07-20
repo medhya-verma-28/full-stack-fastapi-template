@@ -1,16 +1,13 @@
 {
     "http-request": {
-        "path": "/api/v1/items/f8486f47-2908-4a5e-82be-9a15c913927c",
-        "method": "PUT",
+        "path": "/api/v1/items/3dcc3432-0289-482a-bae2-46937a2ae78e",
+        "method": "DELETE",
         "headers": {
             "Content-Type": "application/json",
             "Accept": "application/json",
             "Connection": "close"
         },
-        "body": {
-            "title": "Test Item 925",
-            "description": "Mock item description"
-        }
+        "body": ""
     },
     "http-response": {
         "status": 404,

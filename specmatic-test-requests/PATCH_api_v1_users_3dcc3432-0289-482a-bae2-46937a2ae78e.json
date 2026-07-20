@@ -1,6 +1,6 @@
 {
   "http-request": {
-    "path": "/api/v1/users/me",
+    "path": "/api/v1/users/3dcc3432-0289-482a-bae2-46937a2ae78e",
     "method": "PATCH",
     "headers": {
       "Content-Type": "application/json",

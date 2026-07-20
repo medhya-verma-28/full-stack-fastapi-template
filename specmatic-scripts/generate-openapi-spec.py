@@ -76,6 +76,7 @@ import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from pathlib import Path
+from os import PathLike
 from typing import Optional
 from urllib import error as urllib_error
 from urllib import request as urllib_request
@@ -88,6 +89,8 @@ LOGIN_PATH_PATTERN = re.compile(r"/login/access-token/?(\?.*)?$")
 # placeholder like "Bearer {{OAUTH2_BEARER_TOKEN}}" gets replaced, not
 # duplicated.
 AUTH_HEADER_KEY_PATTERN = re.compile(r"^authorization$", re.IGNORECASE)
+BODY_TOKEN_KEY_PATTERN = re.compile(r"^token$", re.IGNORECASE)
+
 
 
 @dataclass
@@ -116,7 +119,7 @@ def discover_test_request_files(directory: Path) -> list[Path]:
 
 
 def load_http_request(file_path: Path) -> dict:
-    with file_path.open("r", encoding="utf-8") as handle:
+    with open(file_path,"r", encoding="utf-8") as handle:
         document = json.load(handle)
     http_request = document.get("http-request")
     if not http_request:
@@ -143,7 +146,6 @@ def build_body(http_request: dict, headers: dict) -> Optional[bytes]:
     if body is None:
         return None
     if isinstance(body, (dict, list)):
-        headers.setdefault("Content-Type", "application/json")
         return json.dumps(body).encode("utf-8")
     # Already-encoded string bodies, e.g. "username=...&password=..."
     return str(body).encode("utf-8")
@@ -151,7 +153,7 @@ def build_body(http_request: dict, headers: dict) -> Optional[bytes]:
 
 def is_login_request(http_request: dict) -> bool:
     path = http_request.get("path", "") or ""
-    return bool(LOGIN_PATH_PATTERN.search(path))
+    return path=="/api/v1/login/access-token"
 
 
 def find_login_file(files: list[Path]) -> Optional[Path]:
@@ -165,17 +167,19 @@ def find_login_file(files: list[Path]) -> Optional[Path]:
             return file_path
     return None
 
+def inject_token_in_header(file_path:Path, access_token: str) -> None:
+    with open(file_path, "r", encoding="utf-8") as fp:
+        json_schema = json.load(fp)
+    json_schema["http-request"]["headers"]["Authorization"] = "Bearer " + access_token
+    with open(file_path, "w", encoding="utf-8") as fp:
+        json.dump(json_schema, fp, indent=2)
 
-def strip_existing_authorization_header(headers: dict) -> None:
-    for key in list(headers.keys()):
-        if AUTH_HEADER_KEY_PATTERN.match(key):
-            del headers[key]
-
-
-def inject_bearer_token(headers: dict, access_token: str) -> None:
-    strip_existing_authorization_header(headers)
-    # Plain string concatenation for the "Bearer <token>" scheme.
-    headers["Authorization"] = "Bearer " + access_token
+def inject_token_in_body(file_path:Path, access_token: str) -> None:
+    with open(file_path, "r", encoding="utf-8") as fp:
+        json_schema = json.load(fp)
+    json_schema["http-request"]["body"]["token"] = "Bearer " + access_token
+    with open(file_path, "w", encoding="utf-8") as fp:
+        json.dump(json_schema, fp, indent=2)
 
 
 def fetch_access_token(
@@ -186,25 +190,14 @@ def fetch_access_token(
     http_request = load_http_request(login_request_file)
     path = http_request["path"]
     headers = http_request.get("headers", {})
-    form_fields = http_request.get("form-fields")
     body = http_request.get("body")
     url = proxy_base_url.rstrip("/") + path
-
-    if form_fields is not None:
-        response = requests.post(
-            url,
-            headers=headers,
-            data=form_fields,
-            timeout=timeout,
-        )
-    else:
-        response = requests.post(
+    response = requests.post(
             url,
             headers=headers,
             data=body,
             timeout=timeout,
         )
-    response.raise_for_status()
 
     print("Login response status:", response.status_code)
     print("Login response:", response.text)
@@ -217,11 +210,25 @@ def fetch_access_token(
 
     return token
 
-def has_authorization_header(headers: dict) -> bool:
-    return any(
-        AUTH_HEADER_KEY_PATTERN.match(key)
-        for key in headers.keys()
-    )
+def has_authorization_header(file_path: Path) -> bool:
+    with open(file_path,"r", encoding="utf-8") as fp:
+        json_schema=json.load(fp)
+    if "Authorization" in json_schema["http-request"]["headers"]:
+        return True
+    else:
+        return False
+
+def has_token_body_parameter(file_path: Path) -> bool:
+    with open(file_path, "r", encoding="utf-8") as fp:
+        json_schema=json.load(fp)
+
+    if "body" in json_schema["http-request"]:         
+        if "token" in json_schema["http-request"]["body"]:
+            return True
+        else:
+            return False
+    else:
+        return False
 
 
 def fire_request(
@@ -232,13 +239,18 @@ def fire_request(
 ) -> RequestResult:
     http_request = load_http_request(file_path)
     method = http_request.get("method", "GET").upper()
-    headers = dict(http_request.get("headers", {}))
+    headers = http_request.get("headers", {})
+    body = http_request.get("body", {})
 
     # Inject a live token only if this request originally expects an
     # Authorization header (Bearer {{OAUTH2_BEARER_TOKEN}}).
-    if (bearer_token and not is_login_request(http_request) and has_authorization_header(headers)):
-        inject_bearer_token(headers, bearer_token)
-
+    if (bearer_token and not is_login_request(http_request) and has_authorization_header(file_path)):
+        inject_token_in_header(file_path=file_path, access_token=bearer_token)
+    elif (bearer_token and not is_login_request(http_request) and has_token_body_parameter(file_path)):
+        inject_token_in_body(file_path=file_path, access_token=bearer_token)
+    
+    http_request = load_http_request(file_path)
+    headers = dict(http_request.get("headers", {}))
     url = build_url(proxy_base_url, http_request)
     data = build_body(http_request, headers)
 
@@ -379,67 +391,55 @@ def main() -> None:
     parser.add_argument(
         "--dir",
         default="./specmatic-test-requests",
-        help="Directory containing *.json Specmatic example files (default: %(default)s)",
+        help="Directory containing *.json Specmatic example files (default: %(default)s)"
     )
     parser.add_argument(
         "--proxy-url",
         default="http://localhost:9000",
-        help="Base URL of the running Specmatic proxy server (default: %(default)s)",
+        help="Base URL of the running Specmatic proxy server (default: %(default)s)"
     )
     parser.add_argument(
         "--iterations",
         type=int,
         default=1,
-        help="How many times to replay the full set of requests (default: %(default)s)",
+        help="How many times to replay the full set of requests (default: %(default)s)"
     )
     parser.add_argument(
         "--concurrency",
         type=int,
         default=1,
         help="Number of requests to fire in parallel per iteration. "
-        "1 = sequential (default: %(default)s)",
+        "1 = sequential (default: %(default)s)"
     )
     parser.add_argument(
         "--delay",
         type=float,
         default=0.0,
-        help="Delay in seconds between requests when running sequentially (default: %(default)s)",
+        help="Delay in seconds between requests when running sequentially (default: %(default)s)"
     )
     parser.add_argument(
         "--timeout",
         type=float,
         default=10.0,
-        help="Per-request timeout in seconds (default: %(default)s)",
+        help="Per-request timeout in seconds (default: %(default)s)"
     )
     parser.add_argument(
         "--fail-fast",
         action="store_true",
-        help="Stop on the first failed request (sequential mode only)",
+        help="Stop on the first failed request (sequential mode only)"
     )
     parser.add_argument(
         "--no-auto-auth",
         action="store_true",
         help="Disable built-in token fetch/injection; send headers exactly as "
         "written in each file. Use this if a licensed Specmatic Enterprise "
-        "pre_specmatic_request_processor adapter is already handling auth.",
+        "pre_specmatic_request_processor adapter is already handling auth."
     )
     parser.add_argument(
         "--auth-file",
+        default="specmatic-test-requests/00_POST_api_v1_login_access-token.json",
         help="Explicit path to the login/access-token request JSON file "
-        "(default: auto-detected among --dir's *.json files)",
-    )
-    parser.add_argument(
-        "--auth-path",
-        help="Fallback login path if no login file is found/auto-detected, "
-        "e.g. /api/v1/login/access-token",
-    )
-    parser.add_argument(
-        "--auth-username",
-        help="Fallback OAuth2 username/email, used with --auth-path",
-    )
-    parser.add_argument(
-        "--auth-password",
-        help="Fallback OAuth2 password, used with --auth-path",
+        "(default: auto-detected among --dir's *.json files)"
     )
     args = parser.parse_args()
 
@@ -453,23 +453,19 @@ def main() -> None:
     print(f"Target proxy: {args.proxy_url}")
     print(f"Iterations={args.iterations} Concurrency={args.concurrency}\n")
 
-    bearer_token: fetch_access_token
+    bearer_token: Optional[str] = None
     if not args.no_auto_auth:
-        login_file = Path(args.auth_file) if args.auth_file else find_login_file(files)
+        login_file = AUTH_FILE_PATH
+        
         if login_file:
             print(f"Auth: using login request file '{login_file.name}'")
         else:
             print("Auth: no login/access-token file found, using --auth-* overrides")
         try:
-            login_request_file = next(
-                p for p in files
-                if is_login_request(load_http_request(p))
-            )
-
             bearer_token = fetch_access_token(
-                args.proxy_url,
-                login_request_file,
-                args.timeout,
+                proxy_base_url="http://localhost:9000",
+                timeout=15,
+                login_request_file=login_file
             )
             print("Auth: access token obtained, will inject into subsequent requests\n")
         except (urllib_error.URLError, urllib_error.HTTPError, ValueError, KeyError) as exc:
@@ -507,4 +503,10 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    PROJECT_ROOT = Path(__file__).resolve().parent.parent
+    sys.path.append(str(PROJECT_ROOT))
+
+    AUTH_FILE_PATH = PROJECT_ROOT / "specmatic-test-requests" / "00_POST_api_v1_login_access-token.json"
+    sys.path.append(str(AUTH_FILE_PATH))
+
     main()

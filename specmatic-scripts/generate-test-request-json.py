@@ -8,10 +8,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from app.api.main import api_router
 from typing import Annotated, get_origin, get_args
-from fastapi.params import Depends, Security, Query
+from fastapi.params import Depends, Security
 import importlib.util
 from fastapi.security import OAuth2PasswordRequestForm
-import os
+from tests.utils.utils import random_email, random_lower_string
 
 # Setup project root and append to sys.path to allow internal imports
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -22,24 +22,9 @@ BACKEND_DIR = PROJECT_ROOT / "backend" / "app" / "api" / "routes"
 OUTPUT_DIR = PROJECT_ROOT / "specmatic-test-requests"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
-SEEDED_USER_IDS = [
-    "a6d59969-aa8a-4911-8b4f-d773905900e3", "8b266026-b682-4fc6-a149-2ba54ee7048d",
-    "5630f2d8-456b-46cf-af5a-e7592666e614", "bc53fe2a-83f4-4195-b5ee-9491ea409489",
-    "8b76dd7a-3c91-4914-83f5-6a855868ad8d", "1fc5f839-9fa3-4889-880f-d1b12dc4be99",
-    "c3930421-73b9-49ad-ad1d-5edb402acffb", "7cc87c47-f9f8-4f4a-ac69-e848af633bb6",
-    "83f1e936-f967-469e-80e3-d1d012bf73c3", "070acdde-c2c2-45ae-b1ef-ac4d419fb244",
-    "2346f301-56bb-4c66-bf46-4bf9871d2213", "617bbf66-9f1b-4ff3-95ec-8ba2019fdeb9",
-    "7aec7153-e6eb-45d0-8b67-ba4bb0a73f65", "0196e188-50a7-441a-9ab5-97878ddcbe6b",
-    "ac150939-4fcb-4832-b03c-4f32de6fe3ab", "03dcc788-0422-4911-a21d-008f1b862160",
-    "f4b50c25-1cbf-4aba-8a67-d1c061a36927", "f8486f47-2908-4a5e-82be-9a15c913927c",
-    "ec94c87d-8a59-4743-aec8-f3b5c1b4c1dc", "f975ada3-8f16-441b-a04e-abe3189fa9db",
-    "694b754f-b594-422d-8358-8cdbcfb17d36", "1218319c-53b2-48e3-a48b-af44f96e2749"
-]
+SEEDED_USER_IDS ='3dcc3432-0289-482a-bae2-46937a2ae78e'
 
-SEEDED_EMAILS = [
-    "admin@example.com", "private.seed@example.com", "signup.user@example.com",
-    "unique.user.999@example.com", "medhya999@example.com", "alienated1234455@example.com"
-]
+SEEDED_EMAILS = "admin@example.com"
 
 mock_generators = {
 
@@ -58,9 +43,9 @@ mock_generators = {
         ]),
 
         # Authentication fields
-        "token":str(uuid.uuid4()),
+        "token":"Bearer {{OAUTH2_BEARER_TOKEN}}",
 
-        "access_token": "{{OAUTH2_BEARER_TOKEN}}",
+        "access_token": "Bearer {{OAUTH2_BEARER_TOKEN}}",
 
         "token_type":"bearer",
 
@@ -85,13 +70,11 @@ mock_generators = {
         ,
 
         # User fields
-        "user_id": str(uuid.uuid4()),
+        "user_id": random.choice([str(uuid.uuid4()),SEEDED_USER_IDS]),
 
         "email":random.choice([
-            f"user{random.randint(1,10000)}@example.com",
-            random.choice(SEEDED_EMAILS)]),
-
-        "private_email": f"user{random.randint(1,10000)}@example.com",
+            random_email(),
+            SEEDED_EMAILS]),
 
         "full_name":random.choice([
             "John Doe",
@@ -111,10 +94,10 @@ mock_generators = {
 
         # UUID fields
         "id":random.choice ([str(uuid.uuid4()),
-            random.choice(SEEDED_USER_IDS)]),
+            SEEDED_USER_IDS]),
 
         "owner_id":random.choice ([str(uuid.uuid4()),
-            random.choice(SEEDED_USER_IDS)]) ,
+            SEEDED_USER_IDS]) ,
 
 
         # Date fields
@@ -137,53 +120,63 @@ mock_generators = {
     # UserCreate/UserRegister parameter
     "user_in": {
         "email": random.choice([
-            f"user{random.randint(1,10000)}@example.com",
-            random.choice(SEEDED_EMAILS)
+            random_email(),
+            SEEDED_EMAILS
         ]),
-        "password": f"Password@{random.randint(1000,9999)}",
+        "password": "changethis",
         "full_name": random.choice([
             "John Doe",
             "Alice Smith",
             "Robert Johnson"
-        ])
+        ]),
+        "is_verified": random.choice([True, False])
     },
 
     # Generic request body (ResetPassword, etc.)
     "reset_password_body": {
-        "token":str(uuid.uuid4()),
+        "token":"Bearer {{OAUTH2_BEARER_TOKEN}}",
         "new_password": f"NewPassword@{random.randint(1000,9999)}"
     },
 
     "users_me_password_body": {
-        "token":str(uuid.uuid4()),
+        "token":"Bearer {{OAUTH2_BEARER_TOKEN}}",
         "current_password":
-            f"OldPassword@{random.randint(1000,9999)}"
+            "changethis"
         ,
-        "new_password": f"NewPassword@{random.randint(1000,9999)}"
+        "new_password": "changethis"
     },
 
+    "private_users_body" : {"email": random_lower_string()+random_email(),
+      "password": "changethis",
+      "full_name": random.choice([
+            "John Doe",
+            "Alice Smith",
+            "Robert Johnson"
+        ]),
+      "is_verified": random.choice([True, False])},
+
     # EmailStr parameter
-    "email_to": random.choice(SEEDED_EMAILS),
+    "email_to": SEEDED_EMAILS,
     # OAuth2 login
 "username": "admin@example.com",
 
 # Password recovery
-"email": random.choice(SEEDED_EMAILS),
+"email": random.choice([SEEDED_EMAILS,random_lower_string()+random_email()]),
 
 # Users
 "user_update": {
-    "email": random.choice(SEEDED_EMAILS),
+    "email": random_lower_string()+random_email(),
     "full_name": random.choice([
         "John Doe",
         "Alice Smith",
         "Robert Johnson"
     ]),
-    "password": f"Password@{random.randint(1000,9999)}",
+    "password": "changethis",
     "is_active": random.choice([True, False]),
     "is_superuser": random.choice([True, False])
 },
 
-# Items
+# Items (This would fail always in boilerplate setup as no items are defined)
 "item_update": {
     "title": f"Updated Item {random.randint(1,1000)}",
     "description": random.choice([
@@ -198,11 +191,11 @@ mock_generators = {
         "John Doe",
         "Alice Smith"
     ]),
-    "email": random.choice(SEEDED_EMAILS)
+    "email": random_lower_string()+random_email()
 },
 
 # UUID path parameters
-"id": random.choice(SEEDED_USER_IDS),
+"id": SEEDED_USER_IDS,
 
 # Query params
 "skip": random.randint(0,50),
@@ -338,30 +331,39 @@ if BACKEND_DIR.exists():
                                 if path_var and name == path_var:
                                     continue
 
+                                if "private" in api_path:
+                                    param_values.update(generate_mock_data("private_users_body"))
+                                    continue
                                 if "reset-password" in api_path:
                                      reset_password_params = generate_mock_data("reset_password_body")
+                                     continue
                                 if "users/me/password" in api_path:
                                     users_me_password_params = generate_mock_data("users_me_password_body")
-                                if "private" in api_path:
-                                    param_values["body"] = generate_mock_data("private_email")
+                                    continue
 
                                 if "users/signup" in api_path:
                                     param_values.update(generate_mock_data("user_in"))
+                                    continue
 
                                 if api_path.endswith("/users/") and method == "POST":
                                     param_values.update(generate_mock_data("user_in"))
+                                    continue
 
                                 if "/users/" in api_path and method == "PATCH":
                                     param_values.update(generate_mock_data("user_update"))
+                                    continue
 
                                 if api_path.endswith("/items/") and method == "POST":
                                     param_values.update(generate_mock_data("item_in"))
+                                    continue
 
                                 if "/items/" in api_path and method == "PUT":
                                     param_values.update(generate_mock_data("item_update"))
+                                    continue
 
                                 if "/items/" in api_path and method == "PATCH":
                                     param_values.update(generate_mock_data("item_update"))
+                                    continue
 
                                 if (name in mock_generators) and method in {"POST", "PUT", "PATCH"}:
                                     if name in ["item_in", "user_in", "body"]:
@@ -371,6 +373,7 @@ if BACKEND_DIR.exists():
                                     
                                     else:
                                         param_values[name] = generate_mock_data(name)
+                                        continue
                         
                         headers = dict()
                         safe_filename = method + "_" +api_path.strip("/").replace("/", "_").replace("{", "").replace("}", "")
@@ -432,7 +435,6 @@ if BACKEND_DIR.exists():
                                 "body": users_me_password_params
                             }
                         else:
-                            
                             headers["Content-Type"] =  "application/json"
                             headers["Accept"] =  "application/json"
                             headers["Authorization"] =  "Bearer {{OAUTH2_BEARER_TOKEN}}"
@@ -443,9 +445,6 @@ if BACKEND_DIR.exists():
                         stub_structure = {
                             "http-request": http_request_container
                         }
-
-                        print(output_file_name)
-                        print(headers)
 
                         with open(output_file, "w", encoding="utf-8") as fp:
                             json.dump(stub_structure, fp, indent=2)

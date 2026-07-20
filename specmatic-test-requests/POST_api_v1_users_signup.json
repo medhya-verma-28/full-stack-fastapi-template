@@ -8,8 +8,9 @@
     },
     "body": {
       "email": "admin@example.com",
-      "password": "Password@5336",
-      "full_name": "Alice Smith"
+      "password": "changethis",
+      "full_name": "Alice Smith",
+      "is_verified": true
     }
   }
 }

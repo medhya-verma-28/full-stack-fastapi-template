@@ -1,7 +1,7 @@
 {
     "http-request": {
-        "path": "/api/v1/items/f8486f47-2908-4a5e-82be-9a15c913927c",
-        "method": "GET",
+        "path": "/api/v1/users/3dcc3432-0289-482a-bae2-46937a2ae78e",
+        "method": "DELETE",
         "headers": {
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -10,11 +10,11 @@
         "body": ""
     },
     "http-response": {
-        "status": 404,
+        "status": 200,
         "body": {
-            "detail": "Item not found"
+            "message": "User deleted successfully"
         },
-        "status-text": "Not Found",
+        "status-text": "OK",
         "headers": {
             "content-type": "application/json",
             "connection": "close"

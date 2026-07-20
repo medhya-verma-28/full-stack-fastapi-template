@@ -8,18 +8,18 @@
             "Connection": "close"
         },
         "body": {
-            "title": "Test Item 925",
-            "description": "Mock item description"
+            "title": "Test Item 822",
+            "description": "Sample description for testing"
         }
     },
     "http-response": {
         "status": 200,
         "body": {
-            "title": "Test Item 925",
-            "description": "Mock item description",
-            "id": "b06f8d25-dc9b-40b8-8f31-783eb484292c",
-            "owner_id": "a3a6585e-6095-42d3-bd9d-38d250c4a5e1",
-            "created_at": "2026-07-18T19:31:06.544736Z"
+            "title": "Test Item 822",
+            "description": "Sample description for testing",
+            "id": "0427fe89-58f7-47f4-af67-523b1c667007",
+            "owner_id": "e764ee8a-09d8-4e2f-89c0-d688efba65f8",
+            "created_at": "2026-07-20T04:04:01.703728Z"
         },
         "status-text": "OK",
         "headers": {

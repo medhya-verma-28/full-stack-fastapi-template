@@ -3,9 +3,9 @@ info:
   title: proxy_generated
   version: "1"
 paths:
-  /api/v1/items/1218319c-53b2-48e3-a48b-af44f96e2749:
+  /api/v1/items/3dcc3432-0289-482a-bae2-46937a2ae78e:
     get:
-      summary: api_v1_items_1218319c-53b2-48e3-a48b-af44f96e2749_GET_application_json_404_application_json_1
+      summary: api_v1_items_3dcc3432-0289-482a-bae2-46937a2ae78e_GET_application_json_404_application_json_1
       parameters:
       - name: Accept
         in: header
@@ -25,7 +25,7 @@ paths:
         required: true
       responses:
         "404":
-          description: api_v1_items_1218319c-53b2-48e3-a48b-af44f96e2749_GET_application_json_404_application_json_1
+          description: api_v1_items_3dcc3432-0289-482a-bae2-46937a2ae78e_GET_application_json_404_application_json_1
           headers:
             connection:
               required: true
@@ -34,9 +34,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Api_V1_Items_1218319c-53b2-48e3-a48b-af44f96e2749_GET_404_application_json_ResponseBody"
+                $ref: "#/components/schemas/Api_V1_Items_3dcc3432-0289-482a-bae2-46937a2ae78e_GET_404_application_json_ResponseBody"
     put:
-      summary: api_v1_items_1218319c-53b2-48e3-a48b-af44f96e2749_PUT_application_json_404_application_json_1
+      summary: api_v1_items_3dcc3432-0289-482a-bae2-46937a2ae78e_PUT_application_json_404_application_json_1
       parameters:
       - name: Accept
         in: header
@@ -52,11 +52,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Api_V1_Items_1218319c-53b2-48e3-a48b-af44f96e2749_PUT_application_json_RequestBody"
+              $ref: "#/components/schemas/Api_V1_Items_3dcc3432-0289-482a-bae2-46937a2ae78e_PUT_application_json_RequestBody"
         required: true
       responses:
         "404":
-          description: api_v1_items_1218319c-53b2-48e3-a48b-af44f96e2749_PUT_application_json_404_application_json_1
+          description: api_v1_items_3dcc3432-0289-482a-bae2-46937a2ae78e_PUT_application_json_404_application_json_1
           headers:
             connection:
               required: true
@@ -65,9 +65,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Api_V1_Items_1218319c-53b2-48e3-a48b-af44f96e2749_PUT_404_application_json_ResponseBody"
+                $ref: "#/components/schemas/Api_V1_Items_3dcc3432-0289-482a-bae2-46937a2ae78e_PUT_404_application_json_ResponseBody"
     delete:
-      summary: api_v1_items_1218319c-53b2-48e3-a48b-af44f96e2749_DELETE_application_json_404_application_json_1
+      summary: api_v1_items_3dcc3432-0289-482a-bae2-46937a2ae78e_DELETE_application_json_404_application_json_1
       parameters:
       - name: Accept
         in: header
@@ -87,7 +87,7 @@ paths:
         required: true
       responses:
         "404":
-          description: api_v1_items_1218319c-53b2-48e3-a48b-af44f96e2749_DELETE_application_json_404_application_json_1
+          description: api_v1_items_3dcc3432-0289-482a-bae2-46937a2ae78e_DELETE_application_json_404_application_json_1
           headers:
             connection:
               required: true
@@ -96,101 +96,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Api_V1_Items_1218319c-53b2-48e3-a48b-af44f96e2749_DELETE_404_application_json_ResponseBody"
-  /api/v1/items/f8486f47-2908-4a5e-82be-9a15c913927c:
-    get:
-      summary: api_v1_items_f8486f47-2908-4a5e-82be-9a15c913927c_GET_application_json_404_application_json_1
-      parameters:
-      - name: Accept
-        in: header
-        required: true
-        schema:
-          type: string
-      - name: Connection
-        in: header
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: string
-        required: true
-      responses:
-        "404":
-          description: api_v1_items_f8486f47-2908-4a5e-82be-9a15c913927c_GET_application_json_404_application_json_1
-          headers:
-            connection:
-              required: true
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Api_V1_Items_F8486f47-2908-4a5e-82be-9a15c913927c_GET_404_application_json_ResponseBody"
-    put:
-      summary: api_v1_items_f8486f47-2908-4a5e-82be-9a15c913927c_PUT_application_json_404_application_json_1
-      parameters:
-      - name: Accept
-        in: header
-        required: true
-        schema:
-          type: string
-      - name: Connection
-        in: header
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Api_V1_Items_F8486f47-2908-4a5e-82be-9a15c913927c_PUT_application_json_RequestBody"
-        required: true
-      responses:
-        "404":
-          description: api_v1_items_f8486f47-2908-4a5e-82be-9a15c913927c_PUT_application_json_404_application_json_1
-          headers:
-            connection:
-              required: true
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Api_V1_Items_F8486f47-2908-4a5e-82be-9a15c913927c_PUT_404_application_json_ResponseBody"
-    delete:
-      summary: api_v1_items_f8486f47-2908-4a5e-82be-9a15c913927c_DELETE_application_json_404_application_json_1
-      parameters:
-      - name: Accept
-        in: header
-        required: true
-        schema:
-          type: string
-      - name: Connection
-        in: header
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: string
-        required: true
-      responses:
-        "404":
-          description: api_v1_items_f8486f47-2908-4a5e-82be-9a15c913927c_DELETE_application_json_404_application_json_1
-          headers:
-            connection:
-              required: true
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Api_V1_Items_F8486f47-2908-4a5e-82be-9a15c913927c_DELETE_404_application_json_ResponseBody"
+                $ref: "#/components/schemas/Api_V1_Items_3dcc3432-0289-482a-bae2-46937a2ae78e_DELETE_404_application_json_ResponseBody"
   /api/v1/items:
     get:
       summary: api_v1_items__GET_application_json_200_application_json_1
@@ -313,9 +219,9 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Api_V1_Login_Test-token_POST_200_application_json_ResponseBody"
-  /api/v1/password-recovery-html-content/signup.user@example.com:
+  /api/v1/password-recovery-html-content/admin@example.com:
     post:
-      summary: api_v1_password-recovery-html-content_signup.user@example.com_POST_application_json_401_application_json_1
+      summary: api_v1_password-recovery-html-content_admin@example.com_POST_application_json_404_application_json_1
       parameters:
       - name: Accept
         in: header
@@ -331,16 +237,12 @@ paths:
         content:
           application/json:
             schema:
-              $ref: Api_V1_Password-recovery-html-content_Signup.user_example.com_POST_application_json_RequestBody
+              $ref: Api_V1_Password-recovery-html-content_Admin_example.com_POST_application_json_RequestBody
         required: true
       responses:
-        "401":
-          description: api_v1_password-recovery-html-content_signup.user@example.com_POST_application_json_401_application_json_1
+        "404":
+          description: api_v1_password-recovery-html-content_admin@example.com_POST_application_json_404_application_json_1
           headers:
-            www-authenticate:
-              required: true
-              schema:
-                type: string
             connection:
               required: true
               schema:
@@ -348,10 +250,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: Api_V1_Password-recovery-html-content_Signup.user_example.com_POST_401_application_json_ResponseBody
-  /api/v1/password-recovery/private.seed@example.com:
+                $ref: Api_V1_Password-recovery-html-content_Admin_example.com_POST_404_application_json_ResponseBody
+  /api/v1/password-recovery/admin@example.com:
     post:
-      summary: api_v1_password-recovery_private.seed@example.com_POST_200_application_json_1
+      summary: api_v1_password-recovery_admin@example.com_POST_200_application_json_1
       parameters:
       - name: Accept
         in: header
@@ -365,7 +267,7 @@ paths:
           type: string
       responses:
         "200":
-          description: api_v1_password-recovery_private.seed@example.com_POST_200_application_json_1
+          description: api_v1_password-recovery_admin@example.com_POST_200_application_json_1
           headers:
             connection:
               required: true
@@ -374,42 +276,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: Api_V1_Password-recovery_Private.seed_example.com_POST_200_application_json_ResponseBody
-  /api/v1/password-recovery/signup.user@example.com:
-    post:
-      summary: api_v1_password-recovery_signup.user@example.com_POST_application_json_200_application_json_1
-      parameters:
-      - name: Accept
-        in: header
-        required: true
-        schema:
-          type: string
-      - name: Connection
-        in: header
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: Api_V1_Password-recovery_Signup.user_example.com_POST_application_json_RequestBody
-        required: true
-      responses:
-        "200":
-          description: api_v1_password-recovery_signup.user@example.com_POST_application_json_200_application_json_1
-          headers:
-            connection:
-              required: true
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                $ref: Api_V1_Password-recovery_Signup.user_example.com_POST_200_application_json_ResponseBody
+                $ref: Api_V1_Password-recovery_Admin_example.com_POST_200_application_json_ResponseBody
   /api/v1/private/users:
     post:
-      summary: api_v1_private_users__POST_application_json_500_text_plain_1
+      summary: api_v1_private_users__POST_application_json_200_application_json_1
       parameters:
       - name: Accept
         in: header
@@ -428,17 +298,17 @@ paths:
               $ref: "#/components/schemas/Api_V1_Private_Users_POST_application_json_RequestBody"
         required: true
       responses:
-        "500":
-          description: api_v1_private_users__POST_application_json_500_text_plain_1
+        "200":
+          description: api_v1_private_users__POST_application_json_200_application_json_1
           headers:
             connection:
               required: true
               schema:
                 type: string
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                $ref: "#/components/schemas/Api_V1_Private_Users_POST_200_application_json_ResponseBody"
   /api/v1/reset-password:
     post:
       summary: api_v1_reset-password__POST_application_json_400_application_json_1
@@ -471,9 +341,9 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Api_V1_Reset-password_POST_400_application_json_ResponseBody"
-  /api/v1/users/26bbe8fd-5003-4087-a997-7c45621c4aae:
+  /api/v1/users/3dcc3432-0289-482a-bae2-46937a2ae78e:
     get:
-      summary: api_v1_users_26bbe8fd-5003-4087-a997-7c45621c4aae_GET_application_json_404_application_json_1
+      summary: api_v1_users_3dcc3432-0289-482a-bae2-46937a2ae78e_GET_application_json_404_application_json_1
       parameters:
       - name: Accept
         in: header
@@ -493,7 +363,7 @@ paths:
         required: true
       responses:
         "404":
-          description: api_v1_users_26bbe8fd-5003-4087-a997-7c45621c4aae_GET_application_json_404_application_json_1
+          description: api_v1_users_3dcc3432-0289-482a-bae2-46937a2ae78e_GET_application_json_404_application_json_1
           headers:
             connection:
               required: true
@@ -502,9 +372,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Api_V1_Users_26bbe8fd-5003-4087-a997-7c45621c4aae_GET_404_application_json_ResponseBody"
+                $ref: "#/components/schemas/Api_V1_Users_3dcc3432-0289-482a-bae2-46937a2ae78e_GET_404_application_json_ResponseBody"
     delete:
-      summary: api_v1_users_26bbe8fd-5003-4087-a997-7c45621c4aae_DELETE_application_json_404_application_json_1
+      summary: api_v1_users_3dcc3432-0289-482a-bae2-46937a2ae78e_DELETE_application_json_200_application_json_1
       parameters:
       - name: Accept
         in: header
@@ -523,8 +393,8 @@ paths:
               type: string
         required: true
       responses:
-        "404":
-          description: api_v1_users_26bbe8fd-5003-4087-a997-7c45621c4aae_DELETE_application_json_404_application_json_1
+        "200":
+          description: api_v1_users_3dcc3432-0289-482a-bae2-46937a2ae78e_DELETE_application_json_200_application_json_1
           headers:
             connection:
               required: true
@@ -533,9 +403,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Api_V1_Users_26bbe8fd-5003-4087-a997-7c45621c4aae_DELETE_404_application_json_ResponseBody"
+                $ref: "#/components/schemas/Api_V1_Users_3dcc3432-0289-482a-bae2-46937a2ae78e_DELETE_200_application_json_ResponseBody"
     patch:
-      summary: api_v1_users_26bbe8fd-5003-4087-a997-7c45621c4aae_PATCH_application_json_404_application_json_1
+      summary: api_v1_users_3dcc3432-0289-482a-bae2-46937a2ae78e_PATCH_application_json_404_application_json_1
       parameters:
       - name: Accept
         in: header
@@ -551,11 +421,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Api_V1_Users_26bbe8fd-5003-4087-a997-7c45621c4aae_PATCH_application_json_RequestBody"
+              $ref: "#/components/schemas/Api_V1_Users_3dcc3432-0289-482a-bae2-46937a2ae78e_PATCH_application_json_RequestBody"
         required: true
       responses:
         "404":
-          description: api_v1_users_26bbe8fd-5003-4087-a997-7c45621c4aae_PATCH_application_json_404_application_json_1
+          description: api_v1_users_3dcc3432-0289-482a-bae2-46937a2ae78e_PATCH_application_json_404_application_json_1
           headers:
             connection:
               required: true
@@ -564,101 +434,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Api_V1_Users_26bbe8fd-5003-4087-a997-7c45621c4aae_PATCH_404_application_json_ResponseBody"
-  /api/v1/users/9dba2d8b-80c6-4d3e-b834-a6ca00272606:
-    get:
-      summary: api_v1_users_9dba2d8b-80c6-4d3e-b834-a6ca00272606_GET_application_json_404_application_json_1
-      parameters:
-      - name: Accept
-        in: header
-        required: true
-        schema:
-          type: string
-      - name: Connection
-        in: header
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: string
-        required: true
-      responses:
-        "404":
-          description: api_v1_users_9dba2d8b-80c6-4d3e-b834-a6ca00272606_GET_application_json_404_application_json_1
-          headers:
-            connection:
-              required: true
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Api_V1_Users_9dba2d8b-80c6-4d3e-b834-a6ca00272606_GET_404_application_json_ResponseBody"
-    delete:
-      summary: api_v1_users_9dba2d8b-80c6-4d3e-b834-a6ca00272606_DELETE_application_json_404_application_json_1
-      parameters:
-      - name: Accept
-        in: header
-        required: true
-        schema:
-          type: string
-      - name: Connection
-        in: header
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: string
-        required: true
-      responses:
-        "404":
-          description: api_v1_users_9dba2d8b-80c6-4d3e-b834-a6ca00272606_DELETE_application_json_404_application_json_1
-          headers:
-            connection:
-              required: true
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Api_V1_Users_9dba2d8b-80c6-4d3e-b834-a6ca00272606_DELETE_404_application_json_ResponseBody"
-    patch:
-      summary: api_v1_users_9dba2d8b-80c6-4d3e-b834-a6ca00272606_PATCH_application_json_404_application_json_1
-      parameters:
-      - name: Accept
-        in: header
-        required: true
-        schema:
-          type: string
-      - name: Connection
-        in: header
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Api_V1_Users_9dba2d8b-80c6-4d3e-b834-a6ca00272606_PATCH_application_json_RequestBody"
-        required: true
-      responses:
-        "404":
-          description: api_v1_users_9dba2d8b-80c6-4d3e-b834-a6ca00272606_PATCH_application_json_404_application_json_1
-          headers:
-            connection:
-              required: true
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Api_V1_Users_9dba2d8b-80c6-4d3e-b834-a6ca00272606_PATCH_404_application_json_ResponseBody"
+                $ref: "#/components/schemas/Api_V1_Users_3dcc3432-0289-482a-bae2-46937a2ae78e_PATCH_404_application_json_ResponseBody"
   /api/v1/users/me:
     get:
       summary: api_v1_users_me_GET_application_json_200_application_json_1
@@ -854,7 +630,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Api_V1_Users_GET_200_application_json_ResponseBody"
     post:
-      summary: api_v1_users__POST_application_json_400_application_json_1
+      summary: api_v1_users__POST_application_json_200_application_json_1
       parameters:
       - name: Accept
         in: header
@@ -873,8 +649,8 @@ paths:
               $ref: "#/components/schemas/Api_V1_Users_POST_application_json_RequestBody"
         required: true
       responses:
-        "400":
-          description: api_v1_users__POST_application_json_400_application_json_1
+        "200":
+          description: api_v1_users__POST_application_json_200_application_json_1
           headers:
             connection:
               required: true
@@ -883,7 +659,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Api_V1_Users_POST_400_application_json_ResponseBody"
+                $ref: "#/components/schemas/Api_V1_Users_POST_200_application_json_ResponseBody"
   /api/v1/utils/health-check:
     get:
       summary: api_v1_utils_health-check__GET_application_json_200_application_json_1
@@ -948,21 +724,21 @@ paths:
                 $ref: "#/components/schemas/Api_V1_Utils_Test-email_POST_201_application_json_ResponseBody"
 components:
   schemas:
-    Api_V1_Items_1218319c-53b2-48e3-a48b-af44f96e2749_DELETE_404_application_json_ResponseBody:
+    Api_V1_Items_3dcc3432-0289-482a-bae2-46937a2ae78e_DELETE_404_application_json_ResponseBody:
       required:
       - detail
       type: object
       properties:
         detail:
           type: string
-    Api_V1_Items_1218319c-53b2-48e3-a48b-af44f96e2749_GET_404_application_json_ResponseBody:
+    Api_V1_Items_3dcc3432-0289-482a-bae2-46937a2ae78e_GET_404_application_json_ResponseBody:
       required:
       - detail
       type: object
       properties:
         detail:
           type: string
-    Api_V1_Items_1218319c-53b2-48e3-a48b-af44f96e2749_PUT_application_json_RequestBody:
+    Api_V1_Items_3dcc3432-0289-482a-bae2-46937a2ae78e_PUT_application_json_RequestBody:
       required:
       - description
       - title
@@ -972,38 +748,7 @@ components:
           type: string
         description:
           type: string
-    Api_V1_Items_1218319c-53b2-48e3-a48b-af44f96e2749_PUT_404_application_json_ResponseBody:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          type: string
-    Api_V1_Items_F8486f47-2908-4a5e-82be-9a15c913927c_DELETE_404_application_json_ResponseBody:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          type: string
-    Api_V1_Items_F8486f47-2908-4a5e-82be-9a15c913927c_GET_404_application_json_ResponseBody:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          type: string
-    Api_V1_Items_F8486f47-2908-4a5e-82be-9a15c913927c_PUT_application_json_RequestBody:
-      required:
-      - description
-      - title
-      type: object
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-    Api_V1_Items_F8486f47-2908-4a5e-82be-9a15c913927c_PUT_404_application_json_ResponseBody:
+    Api_V1_Items_3dcc3432-0289-482a-bae2-46937a2ae78e_PUT_404_application_json_ResponseBody:
       required:
       - detail
       type: object
@@ -1034,7 +779,6 @@ components:
           type: boolean
         full_name:
           type: string
-          nullable: true
     Api_V1_Items_GET_200_application_json_ResponseBody:
       required:
       - count
@@ -1108,27 +852,17 @@ components:
           type: string
         created_at:
           type: string
-    Api_V1_Password-recovery-html-content_Signup.user_example.com_POST_application_json_RequestBody:
+    Api_V1_Password-recovery-html-content_Admin_example.com_POST_application_json_RequestBody:
       type: object
       properties: {}
-    Api_V1_Password-recovery-html-content_Signup.user_example.com_POST_401_application_json_ResponseBody:
+    Api_V1_Password-recovery-html-content_Admin_example.com_POST_404_application_json_ResponseBody:
       required:
       - detail
       type: object
       properties:
         detail:
           type: string
-    Api_V1_Password-recovery_Private.seed_example.com_POST_200_application_json_ResponseBody:
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-    Api_V1_Password-recovery_Signup.user_example.com_POST_application_json_RequestBody:
-      type: object
-      properties: {}
-    Api_V1_Password-recovery_Signup.user_example.com_POST_200_application_json_ResponseBody:
+    Api_V1_Password-recovery_Admin_example.com_POST_200_application_json_ResponseBody:
       required:
       - message
       type: object
@@ -1137,19 +871,41 @@ components:
           type: string
     Api_V1_Private_Users_POST_application_json_RequestBody:
       required:
-      - body
       - email
       - full_name
+      - is_verified
       - password
       type: object
       properties:
-        body:
-          type: string
         email:
           type: string
         password:
           type: string
         full_name:
+          type: string
+        is_verified:
+          type: boolean
+    Api_V1_Private_Users_POST_200_application_json_ResponseBody:
+      required:
+      - created_at
+      - email
+      - full_name
+      - id
+      - is_active
+      - is_superuser
+      type: object
+      properties:
+        email:
+          type: string
+        is_active:
+          type: boolean
+        is_superuser:
+          type: boolean
+        full_name:
+          type: string
+        id:
+          type: string
+        created_at:
           type: string
     Api_V1_Reset-password_POST_application_json_RequestBody:
       required:
@@ -1168,21 +924,21 @@ components:
       properties:
         detail:
           type: string
-    Api_V1_Users_26bbe8fd-5003-4087-a997-7c45621c4aae_DELETE_404_application_json_ResponseBody:
+    Api_V1_Users_3dcc3432-0289-482a-bae2-46937a2ae78e_DELETE_200_application_json_ResponseBody:
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+    Api_V1_Users_3dcc3432-0289-482a-bae2-46937a2ae78e_GET_404_application_json_ResponseBody:
       required:
       - detail
       type: object
       properties:
         detail:
           type: string
-    Api_V1_Users_26bbe8fd-5003-4087-a997-7c45621c4aae_GET_404_application_json_ResponseBody:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          type: string
-    Api_V1_Users_26bbe8fd-5003-4087-a997-7c45621c4aae_PATCH_application_json_RequestBody:
+    Api_V1_Users_3dcc3432-0289-482a-bae2-46937a2ae78e_PATCH_application_json_RequestBody:
       required:
       - email
       - full_name
@@ -1201,47 +957,7 @@ components:
           type: boolean
         is_superuser:
           type: boolean
-    Api_V1_Users_26bbe8fd-5003-4087-a997-7c45621c4aae_PATCH_404_application_json_ResponseBody:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          type: string
-    Api_V1_Users_9dba2d8b-80c6-4d3e-b834-a6ca00272606_DELETE_404_application_json_ResponseBody:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          type: string
-    Api_V1_Users_9dba2d8b-80c6-4d3e-b834-a6ca00272606_GET_404_application_json_ResponseBody:
-      required:
-      - detail
-      type: object
-      properties:
-        detail:
-          type: string
-    Api_V1_Users_9dba2d8b-80c6-4d3e-b834-a6ca00272606_PATCH_application_json_RequestBody:
-      required:
-      - email
-      - full_name
-      - is_active
-      - is_superuser
-      - password
-      type: object
-      properties:
-        email:
-          type: string
-        full_name:
-          type: string
-        password:
-          type: string
-        is_active:
-          type: boolean
-        is_superuser:
-          type: boolean
-    Api_V1_Users_9dba2d8b-80c6-4d3e-b834-a6ca00272606_PATCH_404_application_json_ResponseBody:
+    Api_V1_Users_3dcc3432-0289-482a-bae2-46937a2ae78e_PATCH_404_application_json_ResponseBody:
       required:
       - detail
       type: object
@@ -1272,7 +988,7 @@ components:
         is_superuser:
           type: boolean
         full_name:
-          nullable: true
+          type: string
         id:
           type: string
         created_at:
@@ -1342,6 +1058,7 @@ components:
       required:
       - email
       - full_name
+      - is_verified
       - password
       type: object
       properties:
@@ -1351,6 +1068,8 @@ components:
           type: string
         full_name:
           type: string
+        is_verified:
+          type: boolean
     Api_V1_Users_Signup_POST_400_application_json_ResponseBody:
       required:
       - detail
@@ -1374,6 +1093,7 @@ components:
       required:
       - email
       - full_name
+      - is_verified
       - password
       type: object
       properties:
@@ -1383,12 +1103,29 @@ components:
           type: string
         full_name:
           type: string
-    Api_V1_Users_POST_400_application_json_ResponseBody:
+        is_verified:
+          type: boolean
+    Api_V1_Users_POST_200_application_json_ResponseBody:
       required:
-      - detail
+      - created_at
+      - email
+      - full_name
+      - id
+      - is_active
+      - is_superuser
       type: object
       properties:
-        detail:
+        email:
+          type: string
+        is_active:
+          type: boolean
+        is_superuser:
+          type: boolean
+        full_name:
+          type: string
+        id:
+          type: string
+        created_at:
           type: string
     Api_V1_Utils_Test-email_POST_201_application_json_ResponseBody:
       required:

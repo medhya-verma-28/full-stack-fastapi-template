@@ -1,7 +1,7 @@
 {
     "http-request": {
-        "path": "/api/v1/users/9dba2d8b-80c6-4d3e-b834-a6ca00272606",
-        "method": "DELETE",
+        "path": "/api/v1/items/3dcc3432-0289-482a-bae2-46937a2ae78e",
+        "method": "GET",
         "headers": {
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -12,7 +12,7 @@
     "http-response": {
         "status": 404,
         "body": {
-            "detail": "User not found"
+            "detail": "Item not found"
         },
         "status-text": "Not Found",
         "headers": {

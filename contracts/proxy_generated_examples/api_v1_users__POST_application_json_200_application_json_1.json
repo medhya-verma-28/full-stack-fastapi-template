@@ -9,16 +9,22 @@
         },
         "body": {
             "email": "admin@example.com",
-            "password": "Password@5336",
-            "full_name": "Alice Smith"
+            "password": "changethis",
+            "full_name": "Alice Smith",
+            "is_verified": true
         }
     },
     "http-response": {
-        "status": 400,
+        "status": 200,
         "body": {
-            "detail": "The user with this email already exists in the system."
+            "email": "admin@example.com",
+            "is_active": true,
+            "is_superuser": false,
+            "full_name": "Alice Smith",
+            "id": "bcc2f0d8-4a31-46ed-87e4-83cecf13f01f",
+            "created_at": "2026-07-20T04:04:02.153960Z"
         },
-        "status-text": "Bad Request",
+        "status-text": "OK",
         "headers": {
             "content-type": "application/json",
             "connection": "close"

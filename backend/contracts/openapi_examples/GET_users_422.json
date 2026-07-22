@@ -1,0 +1,31 @@
+{
+  "http-request": {
+    "method": "GET",
+    "path": "/api/v1/users/",
+    "headers": {
+"Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}"  
+    },
+    "query": {
+      "skip": "0",
+      "limit": "not-a-number"
+    }
+  },
+  "http-response": {
+    "status": 422,
+    "headers": {
+ "Content-Type": "application/json"
+    },
+    "body": {
+      "detail": [
+        {
+          "loc": [
+            "query",
+            "limit"
+          ],
+          "msg": "Input should be a valid integer, unable to parse string as an integer",
+          "type": "int_parsing"
+        }
+      ]
+    }
+  }
+}

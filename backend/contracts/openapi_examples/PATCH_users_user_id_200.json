@@ -1,0 +1,28 @@
+{
+  "http-request": {
+    "method": "PATCH",
+    "path": "/api/v1/users/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "headers": {
+"Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}",      "Content-Type": "application/json"
+    },
+    "body": {
+      "full_name": "Admin Updated Name",
+      "email": "user@example.com",
+      "is_active": true
+    }
+  },
+  "http-response": {
+    "status": 200,
+    "headers": {
+   "Content-Type": "application/json"
+    },
+    "body": {
+      "email": "user@example.com",
+      "is_active": true,
+      "is_superuser": false,
+      "full_name": "Admin Updated Name",
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "created_at": "2024-01-15T10:30:00.123456"
+    }
+  }
+}

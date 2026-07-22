@@ -1,0 +1,30 @@
+{
+  "http-request": {
+    "method": "PATCH",
+    "path": "/api/v1/users/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "headers": {
+"Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}",      "Content-Type": "application/json"
+    },
+    "body": {
+      "email": "not-a-valid-email"
+    }
+  },
+  "http-response": {
+    "status": 422,
+    "headers": {
+"Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}",      "Content-Type": "application/json"
+    },
+    "body": {
+      "detail": [
+        {
+          "loc": [
+            "body",
+            "email"
+          ],
+          "msg": "value is not a valid email address",
+          "type": "value_error"
+        }
+      ]
+    }
+  }
+}

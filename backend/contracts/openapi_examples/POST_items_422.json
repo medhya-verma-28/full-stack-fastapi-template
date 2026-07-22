@@ -1,0 +1,30 @@
+{
+  "http-request": {
+    "method": "POST",
+    "path": "/api/v1/items/",
+    "headers": {
+"Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}",      "Content-Type": "application/json"
+    },
+    "body": {
+      "description": "Item with no title"
+    }
+  },
+  "http-response": {
+    "status": 422,
+    "headers": {
+"Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}",      "Content-Type": "application/json"
+    },
+    "body": {
+      "detail": [
+        {
+          "loc": [
+            "body",
+            "title"
+          ],
+          "msg": "Field required",
+          "type": "missing"
+        }
+      ]
+    }
+  }
+}

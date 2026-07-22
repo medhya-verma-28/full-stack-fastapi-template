@@ -1,0 +1,13 @@
+{
+  "http-request": {
+    "method": "GET",
+    "path": "/api/v1/utils/health-check/"
+  },
+  "http-response": {
+    "status": 200,
+    "headers": {
+   "Content-Type": "application/json"
+    },
+    "body": true
+  }
+}

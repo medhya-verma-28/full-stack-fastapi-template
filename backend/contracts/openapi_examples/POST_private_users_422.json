@@ -1,0 +1,31 @@
+{
+  "http-request": {
+    "method": "POST",
+    "path": "/api/v1/private/users/",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "email": "incompleteprivate@example.com",
+      "full_name": "No Password"
+    }
+  },
+  "http-response": {
+    "status": 422,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "detail": [
+        {
+          "loc": [
+            "body",
+            "password"
+          ],
+          "msg": "Field required",
+          "type": "missing"
+        }
+      ]
+    }
+  }
+}

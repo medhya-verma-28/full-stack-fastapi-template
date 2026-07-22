@@ -1,0 +1,27 @@
+{
+  "http-request": {
+    "method": "DELETE",
+    "path": "/api/v1/items/not-a-valid-uuid",
+    "headers": {
+"Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}"      
+    }
+  },
+  "http-response": {
+    "status": 422,
+    "headers": {
+"Content-Type": "application/json"
+    },
+    "body": {
+      "detail": [
+        {
+          "loc": [
+            "path",
+            "id"
+          ],
+          "msg": "Input should be a valid UUID, invalid character found in string",
+          "type": "uuid_parsing"
+        }
+      ]
+    }
+  }
+}

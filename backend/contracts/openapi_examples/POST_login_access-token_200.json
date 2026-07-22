@@ -1,0 +1,27 @@
+{
+  "http-request": {
+    "method": "POST",
+    "path": "/api/v1/login/access-token",
+    "headers": {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "form-fields": {
+      "grant_type": "password",
+      "username": "admin@example.com",
+      "password": "changethis",
+      "scope": "",
+      "client_id": "web-app",
+      "client_secret": "not-used-by-password-grant"
+    }
+  },
+  "http-response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "access_token": "(string)",
+      "token_type": "bearer"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "http-request": {
+    "method": "POST",
+    "path": "/api/v1/utils/test-email/",
+    "headers": {
+"Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}"   
+    },
+    "query": {
+      "email_to": "not-a-valid-email"
+    }
+  },
+  "http-response": {
+    "status": 422,
+    "headers": {
+ "Content-Type": "application/json"
+    },
+    "body": {
+      "detail": [
+        {
+          "loc": [
+            "query",
+            "email_to"
+          ],
+          "msg": "value is not a valid email address",
+          "type": "value_error"
+        }
+      ]
+    }
+  }
+}

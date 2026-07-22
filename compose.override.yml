@@ -128,6 +128,38 @@ services:
       - ./frontend/test-results:/app/frontend/test-results
     ports:
       - 9323:9323
+  token-generator:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    depends_on:
+      backend:
+        condition: service_healthy
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app
+      - ./backend/specmatic-scripts/generate-oauth-bearer-token.py:/usr/src/app/backend/specmatic-scripts/generate-oauth-bearer-token.py
+    working_dir: /usr/src/app
+    command: >
+      python /usr/src/app/backend/specmatic-scripts/generate-oauth-bearer-token.py
+
+  specmatic-runner:
+    image: specmatic/specmatic:2.50.0
+    container_name: specmatic-runner
+    depends_on:
+      backend:
+        condition: service_healthy
+      token-generator:
+        condition: service_completed_successfully
+    volumes:
+      - .:/usr/src/app
+      - ./contracts/openapi.json:/usr/src/app/contracts/openapi.json
+    env_file:
+      - .env
+    working_dir: /usr/src/app
+    command: >
+      test
 
 networks:
   traefik-public:

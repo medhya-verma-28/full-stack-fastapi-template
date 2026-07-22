@@ -1,0 +1,29 @@
+{
+  "http-request": {
+    "method": "PUT",
+    "path": "/api/v1/items/e29b8ed1-4c2e-4a2b-9b23-9d8f1e2a1a11",
+    "headers": {
+"Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}",      "Content-Type": "application/json"
+    },
+    "body": {
+      "title": ""
+    }
+  },
+  "http-response": {
+    "status": 422,
+    "headers": { "Content-Type": "application/json"
+    },
+    "body": {
+      "detail": [
+        {
+          "loc": [
+            "body",
+            "title"
+          ],
+          "msg": "String should have at least 1 character",
+          "type": "string_too_short"
+        }
+      ]
+    }
+  }
+}

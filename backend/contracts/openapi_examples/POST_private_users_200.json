@@ -1,0 +1,29 @@
+{
+  "http-request": {
+    "method": "POST",
+    "path": "/api/v1/private/users/",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "email": "privateuser@example.com",
+      "password": "StrongPass1",
+      "full_name": "Private User",
+      "is_verified": false
+    }
+  },
+  "http-response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "email": "privateuser@example.com",
+      "is_active": true,
+      "is_superuser": false,
+      "full_name": "Private User",
+      "id": "6fa459ea-ee8a-3ca4-894e-db77e160355e",
+      "created_at": "2024-01-15T10:30:00.123456"
+    }
+  }
+}

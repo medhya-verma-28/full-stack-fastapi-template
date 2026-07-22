@@ -1,0 +1,30 @@
+{
+  "http-request": {
+    "method": "POST",
+    "path": "/api/v1/users/",
+    "headers": {
+"Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}",      "Content-Type": "application/json"
+    },
+    "body": {
+      "email": "incomplete@example.com"
+    }
+  },
+  "http-response": {
+    "status": 422,
+    "headers": {
+"Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}",      "Content-Type": "application/json"
+    },
+    "body": {
+      "detail": [
+        {
+          "loc": [
+            "body",
+            "password"
+          ],
+          "msg": "Field required",
+          "type": "missing"
+        }
+      ]
+    }
+  }
+}

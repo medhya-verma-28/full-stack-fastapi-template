@@ -1,0 +1,18 @@
+{
+  "http-request": {
+    "method": "DELETE",
+    "path": "/api/v1/users/me",
+    "headers": {
+"Authorization": "Bearer {{OAUTH2_BEARER_TOKEN}}"   
+    }
+  },
+  "http-response": {
+    "status": 200,
+    "headers": {
+"Content-Type": "application/json"
+    },
+    "body": {
+      "message": "User deleted successfully"
+    }
+  }
+}

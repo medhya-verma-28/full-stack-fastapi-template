@@ -22,27 +22,23 @@ components:
             specs:
               - spec:
                   id: FastApiSpec
-                  path: "contracts/openapi.yaml"
-
+                  path: "backend/contracts/openapi.json"
   runOptions:
     localFastApiExecution:
       openapi:
         type: "test"
-        specs:
-          - spec:
-              id: FastApiSpec
-              baseUrl: "http://backend:8000"
-        actuatorUrl: "http://backend:8000/api/v1/actuator/mappings"
+        baseUrl: "http://backend:8000"
 
 specmatic:
   settings:
     test:
+      timeoutInMilliseconds: 20000
       schemaResiliencyTests: all
     mock:
       generative: true
-
   governance:
     report:
       formats:
         - html
-      outputDirectory: "build/reports/specmatic-tests"
+      outputDirectory: "backend/build/reports/specmatic-tests"
+  

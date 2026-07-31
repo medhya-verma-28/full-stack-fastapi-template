@@ -51,6 +51,10 @@ COPY ./backend/pyproject.toml ./backend/alembic.ini /app/backend/
 
 COPY ./backend/app /app/backend/app
 
+COPY ./backend/specmatic-scripts /app/backend/specmatic-scripts
+
+COPY ./backend/contracts /app/backend/contracts
+
 COPY --from=frontend-build /app/backend/app/frontend /app/backend/app/frontend
 
 # Sync the project
